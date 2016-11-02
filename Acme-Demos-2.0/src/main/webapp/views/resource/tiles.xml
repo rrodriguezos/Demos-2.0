@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2013 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	<definition name="resource/list" extends="master.page">	
+		<put-attribute name="title" value="Resources" />
+		<put-attribute name="body" value="/views/resource/list.jsp" />
+	</definition>
+	
+		<definition name="resource/display" extends="master.page">	
+		<put-attribute name="title" value="Resource Details" />
+		<put-attribute name="body" value="/views/resource/display.jsp" />
+	</definition>
+	
+	<definition name="resource/create" extends="master.page">	
+		<put-attribute name="title" value="Create a Resource" />
+		<put-attribute name="body" value="/views/resource/create.jsp" />
+	</definition>
+	
+</tiles-definitions>
