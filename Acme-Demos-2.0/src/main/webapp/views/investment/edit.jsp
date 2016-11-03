@@ -30,8 +30,18 @@
 
 		<acme:textarea code="investment.description" path="description" />
 		
+		<script type="text/javascript">
+			function confirmCreate() {
+				if ( confirm( '<spring:message code="investment.confirm.create.1" />' ) ) {
+					return confirm( '<spring:message code="investment.confirm.create.2" />' );
+				}
+				return false;
+			}
+		</script>
+		
 		<input type="submit" name="save"
-				value="<spring:message code="demo.save" />" />
+			value="<spring:message code="investment.save" />" 
+			onclick= "javascript: return confirmCreate()" />
 		
 
 		<acme:cancel url="investment/investor/list.do" code="demo.cancel" />
