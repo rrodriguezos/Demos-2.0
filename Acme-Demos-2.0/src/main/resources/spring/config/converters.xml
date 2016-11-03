@@ -45,7 +45,18 @@
 		<bean class="converters.InstalmentToStringConverter" />
 		<bean class="converters.StringToInstalmentConverter" />
 
-
+		<bean class="converters.BankToStringConverter" />
+		<bean class="converters.StringToBankConverter" />
+		
+		<bean class="converters.LoanToStringConverter" />
+		<bean class="converters.StringToLoanConverter" />
+		
+		<bean class="converters.SectionToStringConverter" />
+		<bean class="converters.StringToSectionConverter" />
+		
+		<bean class="converters.WhitePaperToStringConverter" />
+		<bean class="converters.StringToWhitePaperConverter" />
+		
 	</util:list>
 
 </beans>
