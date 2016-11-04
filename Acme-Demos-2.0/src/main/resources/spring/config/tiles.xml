@@ -19,6 +19,7 @@
 		<value>/views/welcome/tiles.xml</value>
 		<value>/views/demo/tiles.xml</value>
 		<value>/views/description/tiles.xml</value>
+		<value>/views/bank/tiles.xml</value>
 		<value>/views/investor/tiles.xml</value>
 		<value>/views/resource/tiles.xml</value>
 		<value>/views/developer/tiles.xml</value>

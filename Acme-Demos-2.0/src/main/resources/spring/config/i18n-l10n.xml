@@ -19,6 +19,7 @@
 		<value>/views/welcome/messages</value>
 		<value>/views/search/messages</value>
 		<value>/views/administrator/messages</value>
+		<value>/views/bank/messages</value>
 		<value>/views/investor/messages</value>
 		<value>/views/description/messages</value>
 		<value>/views/resource/messages</value>

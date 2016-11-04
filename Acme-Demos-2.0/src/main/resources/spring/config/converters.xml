@@ -16,6 +16,13 @@
 		<bean class="converters.StringToDeveloperConverter" />
 		<bean class="converters.DeveloperToStringConverter" />
 		
+		<bean class="converters.StringToBankConverter" />
+		<bean class="converters.BankToStringConverter" />
+		
+		<bean class="converters.StringToLoanConverter" />
+		<bean class="converters.LoanToStringConverter" />
+		
+		
 		<bean class="converters.StringToInvestorConverter" />
 		<bean class="converters.InvestorToStringConverter" />
 

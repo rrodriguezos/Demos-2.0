@@ -60,6 +60,14 @@ public class LoanService {
 		Assert.notNull(loan);
 		loanRepository.saveAndFlush(loan);
 	}
+
+	public Collection<Loan> findLoansByBank(int bankId) {
+		Collection<Loan> result;
+		
+		result = loanRepository.findLoansByBank(bankId);
+		
+		return result;
+	}
 	
 	// Other Business Methods ---------------------------------------
 

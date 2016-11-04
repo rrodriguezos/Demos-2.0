@@ -57,6 +57,7 @@
 		<security:intercept-url pattern="/comment/create.do" access="permitAll" />
 		<security:intercept-url pattern="/comment/edit.do" access="permitAll" />
 		<security:intercept-url pattern="/investor/register.do" access="isAnonymous()" />
+		<security:intercept-url pattern="/bank/register.do" access="isAnonymous()" />
 		
   		<security:intercept-url pattern="/demo/developer/mylist.do" access="hasRole('DEVELOPER')" /> 
 		<security:intercept-url pattern="/demo/developer/edit.do" access="hasRole('DEVELOPER')" />
