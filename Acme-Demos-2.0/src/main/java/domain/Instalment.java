@@ -11,6 +11,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -18,40 +19,37 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Instalment extends DomainEntity {
 
-	
-	
-	//Constructor-----------------
+	// Constructor-----------------
 	public Instalment() {
 		super();
 	}
-	
-	//Attributes-----------------
+
+	// Attributes-----------------
 	private Date instalmentDate;
 	private Double amount;
 	private Boolean paid;
-	
-	
-	
+
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
+	@Past
 	public Date getInstalmentDate() {
 		return instalmentDate;
 	}
-	
+
 	public void setInstalmentDate(Date instalmentDate) {
 		this.instalmentDate = instalmentDate;
 	}
-	
+
 	@Min(1)
 	public Double getAmount() {
 		return amount;
 	}
+
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-	
-	
+
 	public Boolean getPaid() {
 		return paid;
 	}
@@ -60,11 +58,10 @@ public class Instalment extends DomainEntity {
 		this.paid = paid;
 	}
 
-	//Relationships--------------------
+	// Relationships--------------------
 	private Investment investment;
 	private Loan loan;
-	
-	
+
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
@@ -75,8 +72,7 @@ public class Instalment extends DomainEntity {
 	public void setInvestment(Investment investment) {
 		this.investment = investment;
 	}
-	
-	
+
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
@@ -87,13 +83,5 @@ public class Instalment extends DomainEntity {
 	public void setLoan(Loan loan) {
 		this.loan = loan;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

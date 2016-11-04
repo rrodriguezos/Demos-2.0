@@ -1,15 +1,12 @@
 package domain;
 
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -76,8 +73,6 @@ public abstract class Actor extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 	private UserAccount userAccount;
-	
-
 
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	@NotNull
@@ -89,7 +84,5 @@ public abstract class Actor extends DomainEntity {
 	public void setUserAccount(UserAccount userAccount) {
 		this.userAccount = userAccount;
 	}
-
-	
 
 }

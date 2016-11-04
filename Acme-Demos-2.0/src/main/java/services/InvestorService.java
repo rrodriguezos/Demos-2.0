@@ -1,7 +1,6 @@
 package services;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,6 @@ import repositories.InvestorRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
-import domain.Administrator;
-import domain.Comment;
 import domain.Investment;
 import domain.Investor;
 import forms.InvestorRegisterForm;
@@ -151,8 +148,6 @@ public class InvestorService {
 		return result;
 	}
 
-	
-
 	public Investor findByInvestorAccount(UserAccount investorAccount) {
 		Assert.notNull(investorAccount);
 		Investor result;
@@ -160,8 +155,5 @@ public class InvestorService {
 				.getId());
 		return result;
 	}
-
-
-
 
 }

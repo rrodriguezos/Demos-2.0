@@ -17,25 +17,23 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class Bank extends Actor {
 
-	
-	
-	//Constructor.........................
+	// Constructor.........................
 	public Bank() {
 		super();
 	}
-	
-	//Attributes...........................
-	private String name, SWIFTCode;
-	
+
+	// Attributes...........................
+	private String commercialName, SWIFTCode;
+
 	@NotBlank
-	public String getName() {
-		return name;
+	public String getCommercialName() {
+		return commercialName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCommercialName(String commercialName) {
+		this.commercialName = commercialName;
 	}
-	
+
 	@Column(unique = true)
 	@Pattern(regexp = "^(\\D{4}\\D{2}\\w{2}\\w{3})$")
 	public String getSWIFTCode() {
@@ -45,14 +43,14 @@ public class Bank extends Actor {
 	public void setSWIFTCode(String sWIFTCode) {
 		SWIFTCode = sWIFTCode;
 	}
-	
-	//Relationships---------------------------------
-	private Collection<Investment>investments;
+
+	// Relationships---------------------------------
+	private Collection<Investment> investments;
 	private Collection<Loan> loans;
-	
+
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy ="bank")
+	@OneToMany(mappedBy = "bank")
 	public Collection<Investment> getInvestments() {
 		return investments;
 	}
@@ -61,6 +59,9 @@ public class Bank extends Actor {
 		this.investments = investments;
 	}
 
+	@Valid
+	@NotNull
+	@OneToMany(mappedBy = "bank")
 	public Collection<Loan> getLoans() {
 		return loans;
 	}
@@ -68,10 +69,5 @@ public class Bank extends Actor {
 	public void setLoans(Collection<Loan> loans) {
 		this.loans = loans;
 	}
-	
-	
-	
-	
-	
 
 }

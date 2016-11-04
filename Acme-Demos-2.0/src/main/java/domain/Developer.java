@@ -22,6 +22,7 @@ public class Developer extends Actor {
 
 	// Relationships --------------------------------------------------------
 	private Collection<Demo> demos;
+	private Collection<Loan> loans;
 
 	@Valid
 	@NotNull
@@ -32,6 +33,17 @@ public class Developer extends Actor {
 
 	public void setDemos(Collection<Demo> demos) {
 		this.demos = demos;
+	}
+
+	@Valid
+	@NotNull
+	@OneToMany(mappedBy = "developer")
+	public Collection<Loan> getLoans() {
+		return loans;
+	}
+
+	public void setLoans(Collection<Loan> loans) {
+		this.loans = loans;
 	}
 
 }
