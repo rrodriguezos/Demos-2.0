@@ -275,6 +275,7 @@
 		<property name="userAccount" ref="userAccount8" />
 		<property name="name" value="Santander" />
 		<property name="commercialName" value="Santander Banco" />
+		<property name="SWIFTCode" value="SPVGESMM" />
 		<property name="surname" value="Central" />
 		<property name="emailAddress" value="santanderCentral@acmedemos.com" />
 		<property name="phone" value="665874563" />
@@ -294,6 +295,7 @@
 		<property name="userAccount" ref="userAccount9" />
 		<property name="name" value="Bilbao" />
 		<property name="commercialName" value="Bilbao Bank" />
+		<property name="SWIFTCode" value="BBVAESMMRIM" />
 		<property name="surname" value="Vizcaya" />
 		<property name="emailAddress" value="bilbaoVizcaya@acmedemos.com" />
 		<property name="phone" value="665874777" />
@@ -313,6 +315,7 @@
 		<property name="userAccount" ref="userAccount10" />
 		<property name="name" value="Caixa" />
 		<property name="commercialName" value="Caixa Ahorros" />
+		<property name="SWIFTCode" value="CAIXESBB" />
 		<property name="surname" value="CaixaBank" />
 		<property name="emailAddress" value="caixaBank@acmedemos.com" />
 		<property name="phone" value="887874777" />

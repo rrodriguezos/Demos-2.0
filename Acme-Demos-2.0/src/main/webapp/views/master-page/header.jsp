@@ -31,6 +31,8 @@
 					code="master.page.public.catalogueDemo" /></a>
 		<li><a class="fNiv" href="search/buscar.do"><spring:message
 					code="master.page.search.demo" /></a></li>
+					<li><a class="fNiv" href="bank/list.do"><spring:message
+					code="master.page.list.banks" /></a></li>
 
 
 		<security:authorize access="isAnonymous()">
@@ -43,6 +45,8 @@
 						code="master.page.DeveloperRegister" /></a></li>
 						<li><a  href="investor/register.do"> <spring:message
 						code="master.page.InvestorRegister" /></a></li>
+						<li><a  href="bank/register.do"> <spring:message
+						code="master.page.BankRegister" /></a></li>
 				</ul>
 			</li>
 			<li><a class="fNiv" href="security/login.do"> <spring:message
@@ -58,6 +62,12 @@
 		
 		<security:authorize access="hasRole('INVESTOR')">
 			
+
+		</security:authorize>
+		
+		<security:authorize access="hasRole('BANK')">
+			<li><a href="loan/bank/mylist.do"><spring:message
+										code="master.page.user.myloans" /></a></li>
 
 		</security:authorize>
 

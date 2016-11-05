@@ -35,7 +35,8 @@ public class Bank extends Actor {
 	}
 
 	@Column(unique = true)
-	@Pattern(regexp = "^(\\D{4}\\D{2}\\w{2}\\w{3})$")
+	@Pattern(regexp = "^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$")
+	@NotBlank
 	public String getSWIFTCode() {
 		return SWIFTCode;
 	}

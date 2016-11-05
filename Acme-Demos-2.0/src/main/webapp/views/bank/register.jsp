@@ -41,7 +41,7 @@
 			<acme:textbox code="bank.username" path="username" />
 
 			<acme:password code="bank.password" path="password" />
-			<acme:password code="bank.repeatPassword" path="confirmPassword" />
+			<acme:password code="bank.confirmPassword" path="confirmPassword" />
 		</fieldset>
 
 		<fieldset>
@@ -53,7 +53,7 @@
 			<acme:textbox code="bank.surname" path="surname" />
 
 
-			<acme:textbox code="bank.email" path="emailAddress" />
+			<acme:textbox code="bank.emailAddress" path="emailAddress" />
 
 			<acme:textbox code="bank.phone" path="phone" />
 		</fieldset>

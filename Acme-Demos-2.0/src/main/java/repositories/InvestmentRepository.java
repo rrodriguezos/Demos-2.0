@@ -26,4 +26,7 @@ public interface InvestmentRepository extends
 
 	@Query("select i from Investment i where i.bank.id = ?1")
 	Collection<Investment> findInvestmentByBank(int bankId);
+	
+	@Query("select d.investments from Demo d where d.id = ?1")
+	Collection<Investment> investmentByDemo(int demoId);
 }

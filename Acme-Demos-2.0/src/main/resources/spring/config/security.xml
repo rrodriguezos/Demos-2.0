@@ -56,6 +56,13 @@
 		<security:intercept-url pattern="/comment/list.do" access="permitAll" />
 		<security:intercept-url pattern="/comment/create.do" access="permitAll" />
 		<security:intercept-url pattern="/comment/edit.do" access="permitAll" />
+		<security:intercept-url pattern="/bank/list.do" access="permitAll" />
+		<security:intercept-url pattern="/bank/display.do" access="permitAll" />
+		<security:intercept-url pattern="/investment/list.do" access="permitAll" />
+		<security:intercept-url pattern="/investment/display.do" access="permitAll" />
+		<security:intercept-url pattern="/bank/searchResult.do" access="permitAll" />
+		
+		
 		<security:intercept-url pattern="/investor/register.do" access="isAnonymous()" />
 		<security:intercept-url pattern="/bank/register.do" access="isAnonymous()" />
 		

@@ -131,4 +131,10 @@ public class InvestmentService {
 		return result;
 	}
 
+	public Collection<Investment> investmentByDemo(int demoId) {
+		Collection<Investment> result;
+		result = investmentRepository.investmentByDemo(demoId);
+		return result;
+	}
+
 }

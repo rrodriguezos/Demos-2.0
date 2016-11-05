@@ -98,7 +98,7 @@ public class InvestorRegisterForm {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Pattern(regexp = "(\\+[0-9]{1,2} ([(][0-9]{0,3}[)] [0-9]{4,9}|[0-9]{4,9})|^$)")
+	@Pattern(regexp = "^(\\d{9})$")
 	public String getPhone() {
 		return phone;
 	}

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BankService;
@@ -21,7 +22,7 @@ import domain.Loan;
 import forms.BankRegisterForm;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/bank")
 public class BankController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
@@ -46,10 +47,26 @@ public class BankController extends AbstractController {
 
 		banks = bankService.findAll();
 
-		result = new ModelAndView("user/list");
-		result.addObject("users", banks);
-		result.addObject("requestUri", "user/list.do");
+		result = new ModelAndView("bank/list");
+		result.addObject("banks", banks);
+		result.addObject("requestUri", "bank/list.do");
 
+		return result;
+	}
+	// Search ------------------------------------------------------------------
+	@RequestMapping(value = "/searchResult", method = RequestMethod.GET)
+	public ModelAndView searchResult(@RequestParam(defaultValue="") String q) {
+		ModelAndView result;
+		
+		if("".equals(q)) {
+			result = new ModelAndView("redirect:list.do");
+		} else {
+			result = new ModelAndView("bank/list");
+			result.addObject("q", q);
+			result.addObject("banks", bankService.searchByKeyword(q));
+			result.addObject("requestURI", "bank/searchResult.do");
+		}
+		
 		return result;
 	}
 

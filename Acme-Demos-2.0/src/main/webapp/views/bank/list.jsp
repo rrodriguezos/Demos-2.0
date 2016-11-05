@@ -19,16 +19,28 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<form action="bank/searchResult.do" method="get">
+	<table class="formTable">
+		<tr>
+			<td><label for="q"><spring:message	code="service.searchtext" />:</label></td>
+			<td><input type="text" name="q"></td>
+		</tr>
+		
+		<tr>
+			<td><input type="submit" value="<spring:message	code="common.search" />"></td>
+		</tr>
+	</table>
+</form>
+
 <display:table name="banks" id="row" pagesize="5"
 	requestURI="${requestUri}" class="displaytag">
 
-	<spring:message code="bank.username" var="username" />
-	<display:column title="${username}">
-		<jstl:out value="${row.getUserAccount().getUsername() }" />
-	</display:column>
-
 	<spring:message code="bank.name" var="name" />
 	<display:column title="${name}" property="name" />
+	
+	<spring:message code="bank.surname" var="surname" />
+	<display:column title="${surname}" property="surname" />
+	
 
 	<spring:message code="bank.commercialName" var="commercialName" />
 	<display:column title="${commercialName}" property="commercialName" />
@@ -36,14 +48,18 @@
 	<spring:message code="bank.SWIFTCode" var="SWIFTCode" />
 	<display:column title="${SWIFTCode}" property="SWIFTCode" />
 
-	<spring:message code="bank.surname" var="surname" />
-	<display:column title="${surname}" property="surname" />
-
+	
 	<spring:message code="bank.phone" var="phone" />
 	<display:column title="${phone}" property="phone" />
 
 	<spring:message code="bank.emailAddress" var="emailAddress" />
 	<display:column title="${emailAddress}" property="emailAddress" />
+	
+	<spring:message code="bank.investments" var="investmentsHeader" />
+	<display:column title="${investmentsHeader}">
+			<input type="button" value="<spring:message code="bank.investments" />" 
+					onclick="javascript: window.location.assign('investment/list.do?bankId=${row.id}')" />
+	</display:column>
 
 	<spring:message code="bank.display" var="display" />
 	<display:column title="${display}">

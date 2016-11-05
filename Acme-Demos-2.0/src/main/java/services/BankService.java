@@ -134,4 +134,11 @@ public class BankService {
 		return res;
 	}
 
+	public Collection<Bank> searchByKeyword(String keyword) {
+		Assert.notNull(keyword);
+		Collection<Bank> result;
+		result = bankRepository.searchByKeyword(keyword);
+		return result;
+	}
+
 }
