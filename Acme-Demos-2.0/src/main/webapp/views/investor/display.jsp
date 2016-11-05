@@ -22,13 +22,13 @@
 <acme:jstlOut code="investor.emailAddress" value="${investor.emailAddress }"/>
 <acme:jstlOut code="investor.phone" value="${investor.phone }"/>
 <fieldset>
-<acme:jstlOut code="investor.phone" value="${investor.company }"/>
+<acme:jstlOut code="investor.company" value="${investor.company }"/>
 </fieldset>
 <h2><spring:message code="investor.investments"/></h2>
 <display:table name="investments" id="row" pagesize="5" requestURI="investor/display.do" class="displaytag">
 	
-	<spring:message code="investment.title" var="title" />
-	<display:column title="${title}" property="title" />
+	<spring:message code="investment.description" var="description" />
+	<display:column title="${description}" property="description" />
 	
 	<spring:message code="investment.display" var="display" />
 	<display:column title="${display}">

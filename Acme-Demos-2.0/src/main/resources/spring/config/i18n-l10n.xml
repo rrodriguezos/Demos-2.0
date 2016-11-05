@@ -21,7 +21,9 @@
 		<value>/views/administrator/messages</value>
 		<value>/views/bank/messages</value>
 		<value>/views/investor/messages</value>
+		<value>/views/section/messages</value>
 		<value>/views/description/messages</value>
+		<value>/views/whitePaper/messages</value>
 		<value>/views/resource/messages</value>
 		<value>/views/comment/messages</value>
 		<value>/views/developer/messages</value>

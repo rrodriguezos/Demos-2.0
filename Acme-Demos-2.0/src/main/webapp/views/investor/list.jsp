@@ -22,11 +22,6 @@
 <display:table name="investors" id="row" pagesize="5"
 	requestURI="${requestUri}" class="displaytag">
 
-	<spring:message code="investor.investorname" var="investorname" />
-	<display:column title="${investorname}">
-		<jstl:out value="${row.getUserAccount().getUsername() }" />
-	</display:column>
-
 	<spring:message code="investor.name" var="name" />
 	<display:column title="${name}" property="name" />
 
@@ -41,6 +36,12 @@
 
 	<spring:message code="investor.company" var="company" />
 	<display:column title="${company}" property="company" />
+	
+	<spring:message code="investor.whitePapers" var="whitePapersHeader" />
+	<display:column title="${whitePapersHeader}">
+			<input type="button" value="<spring:message code="investor.whitePapers" />" 
+					onclick="javascript: window.location.assign('whitePaper/list.do?investorId=${row.id}')" />
+	</display:column>
 
 	<spring:message code="investor.display" var="display" />
 	<display:column title="${display}">

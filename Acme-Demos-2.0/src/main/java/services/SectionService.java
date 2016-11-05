@@ -60,6 +60,13 @@ public class SectionService {
 		Assert.notNull(section);
 		sectionRepository.saveAndFlush(section);
 	}
+
+	public Collection<Section> sectionsByWhitePaper(int whitePaperId) {
+		Collection<Section> result;
+		result = sectionRepository.sectionsByWhitePaper(whitePaperId);
+		
+		return result;
+	}
 	
 	// Other Business Methods ---------------------------------------
 

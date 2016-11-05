@@ -33,6 +33,10 @@
 					code="master.page.search.demo" /></a></li>
 					<li><a class="fNiv" href="bank/list.do"><spring:message
 					code="master.page.list.banks" /></a></li>
+					<li><a class="fNiv" href="whitePaper/search.do"><spring:message
+					code="master.page.search.searchWhitePaper" /></a></li>
+					<li><a class="fNiv" href="investor/list.do"><spring:message
+					code="master.page.list.investors" /></a></li>
 
 
 		<security:authorize access="isAnonymous()">
