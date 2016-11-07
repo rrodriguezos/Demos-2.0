@@ -108,6 +108,11 @@
 		<security:intercept-url pattern="/instalment/investor/create.do" access="hasRole('INVESTOR')" />
 		<security:intercept-url pattern="/instalment/investor/edit.do" access="hasRole('INVESTOR')" />
 		
+		<security:intercept-url pattern="/loan/create.do" access="hasRole('DEVELOPER')" />
+		<security:intercept-url pattern="/loan/edit.do" access="hasRole('DEVELOPER')" />
+		<security:intercept-url pattern="/loan/list.do" access="hasRole('DEVELOPER')" />
+		<security:intercept-url pattern="/loan/cancel.do" access="hasRole('DEVELOPER')" />
+		
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

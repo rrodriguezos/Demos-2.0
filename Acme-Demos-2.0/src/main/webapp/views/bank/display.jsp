@@ -36,6 +36,11 @@
 
 </fieldset>
 
+<security:authorize access="hasRole('DEVELOPER')">
+	<input type="button" value="<spring:message code="bank.request.loan" />" 
+			onclick="javascript: window.location.assign('loan/create.do?bankId=${id}')" />
+</security:authorize>
+
 <input type="button" name="cancel"
 	value="<spring:message code="bank.cancel"/>"
 	onclick="javascript: window.location.assign('bank/list.do')" />

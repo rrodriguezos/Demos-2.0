@@ -29,16 +29,26 @@
 
 		<li><a href="demo/list.do"><spring:message
 					code="master.page.public.catalogueDemo" /></a>
-		<li><a class="fNiv" href="search/buscar.do"><spring:message
-					code="master.page.search.demo" /></a></li>
+		
 					<li><a class="fNiv" href="bank/list.do"><spring:message
 					code="master.page.list.banks" /></a></li>
-					<li><a class="fNiv" href="whitePaper/search.do"><spring:message
-					code="master.page.search.searchWhitePaper" /></a></li>
+					
 					<li><a class="fNiv" href="investor/list.do"><spring:message
 					code="master.page.list.investors" /></a></li>
 
-
+		<li><a class="fNiv"> <spring:message
+						code="master.page.search" /> 
+			</a>
+				<ul>
+					<li class="arrow"></li>
+						<li><a href="search/buscar.do"><spring:message
+						code="master.page.search.demo" /></a></li>
+						<li><a href="whitePaper/search.do"><spring:message
+						code="master.page.search.searchWhitePaper" /></a></li>	
+				</ul>
+			</li>
+		
+		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv"> <spring:message
 						code="master.page.register" /> 
@@ -53,6 +63,9 @@
 						code="master.page.BankRegister" /></a></li>
 				</ul>
 			</li>
+			
+			
+			
 			<li><a class="fNiv" href="security/login.do"> <spring:message
 						code="master.page.login" /></a></li>
 		</security:authorize>
@@ -90,6 +103,8 @@
 									code="master.page.developer.createDemo" /></a></li>
 									<li><a href="dashboard/developer/list.do"><spring:message
 									code="master.page.developer.dashboard" /></a></li>
+						<li><a href="loan/list.do"><spring:message
+									code="master.page.developer.loans" /></a></li>			
 					</security:authorize>
 					<security:authorize access="hasRole('INVESTOR')">
 						<li><a href="investment/investor/list.do">

@@ -137,8 +137,10 @@ public class BankController extends AbstractController {
 		bank = bankService.findOne(bankId);
 		loans = loanService.findLoansByBank(bankId);
 		investments = investmentService.findInvestmentsByBank(bankId);
-
+		
+		
 		result = new ModelAndView("bank/display");
+		result.addObject("id",bank.getId());
 		result.addObject("bank", bank);
 		result.addObject("loans", loans);
 		result.addObject("investments", investments);

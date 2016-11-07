@@ -33,16 +33,15 @@ public class InstalmentInvestorController extends AbstractController {
 		super();
 	}
 	//List--------------------------------------------------
-	//Listing
-		@RequestMapping(value="/list")
-		public ModelAndView list(@RequestParam int investmentId){
-			ModelAndView res = new ModelAndView("instalment/list");
-			Collection<Instalment> ins = instalmentService.findByInvestment(investmentId);
-			res.addObject("instalments", ins);
-			res.addObject("requestUri", "instalment/investor/list.do");
-			res.addObject("investmentId", investmentId);
-			return res;
-		}
+	@RequestMapping(value="/list")
+	public ModelAndView list(@RequestParam int investmentId){
+		ModelAndView res = new ModelAndView("instalment/list");
+		Collection<Instalment> ins = instalmentService.findByInvestment(investmentId);
+		res.addObject("instalments", ins);
+		res.addObject("requestUri", "instalment/investor/list.do");
+		res.addObject("investmentId", investmentId);
+		return res;
+	}
 	
 	// Create ---------------------------------------------
 	@RequestMapping(value = "/create", method = RequestMethod.GET)

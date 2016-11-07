@@ -14,5 +14,8 @@ public interface LoanRepository extends JpaRepository<Loan, Integer> {
 	@Query("select l from Loan l where l.bank.id = ?1")
 	Collection<Loan> findLoansByBank(int bankId);
 	
+	@Query("select d.loans from Developer d where d.id= ?1")
+	Collection<Loan> findLoansByDev(int devId);
+	
 
 }
