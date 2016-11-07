@@ -43,7 +43,7 @@
 					<li class="arrow"></li>
 						<li><a href="search/buscar.do"><spring:message
 						code="master.page.search.demo" /></a></li>
-						<li><a href="whitePaper/search.do"><spring:message
+						<li><a href="searchWhitePaper/buscar.do"><spring:message
 						code="master.page.search.searchWhitePaper" /></a></li>	
 				</ul>
 			</li>

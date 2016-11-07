@@ -21,6 +21,7 @@
 		<value>/views/description/tiles.xml</value>
 		<value>/views/whitePaper/tiles.xml</value>
 		<value>/views/bank/tiles.xml</value>
+		<value>/views/searchWhitePaper/tiles.xml</value>
 		<value>/views/section/tiles.xml</value>
 		<value>/views/investor/tiles.xml</value>
 		<value>/views/resource/tiles.xml</value>

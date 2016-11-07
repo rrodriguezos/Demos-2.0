@@ -1,6 +1,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,18 +69,19 @@ public class WhitePaperService {
 		return result;
 	}
 
-	public Collection<WhitePaper> searchByKeyword(String q, String date1,String date2) {
+	public Collection<WhitePaper> searchByKeyword(String q, Date date1,
+			Date date2) {
 		Collection<WhitePaper> result = new LinkedList<WhitePaper>();
-		Collection<WhitePaper> cotaText = new LinkedList<WhitePaper>();
 
-		if (date1.isEmpty()|| date2.isEmpty()) {
+		if (date1 == null || date2 == null) {
 
 			result = whitePaperRepository.searchByKeyword(q);
 
-		}else{
-			
-			cotaText = whitePaperRepository.searchByKeyword(q);
-			//Falta acotar por las fechas de entrada a patir de date1 y date 2 y el texto
+		} else {
+
+			result = whitePaperRepository.searchByKeywordWithRange(q, date1,
+					date2);
+
 		}
 
 		return result;

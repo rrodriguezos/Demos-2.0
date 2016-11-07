@@ -1,6 +1,7 @@
 package repositories;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,5 +18,10 @@ public interface WhitePaperRepository extends
 
 	@Query("select w from WhitePaper w where (w.title like CONCAT('%',?1,'%'))")
 	Collection<WhitePaper> searchByKeyword(String q);
+
+
+	@Query("select w from WhitePaper w where (w.title like CONCAT('%',?1,'%') and w.publishedDate<=?3 and w.publishedDate>=?2)")
+	Collection<WhitePaper> searchByKeywordWithRange(String q, Date date1,
+			Date date2);
 
 }

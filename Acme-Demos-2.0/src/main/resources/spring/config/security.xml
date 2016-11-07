@@ -45,6 +45,8 @@
 	
 		<security:intercept-url pattern="/search/buscar.do" access="permitAll" />
 		<security:intercept-url pattern="/search/buscando.do" access="permitAll" />
+		<security:intercept-url pattern="/searchWhitePaper/buscar.do" access="permitAll" />
+		<security:intercept-url pattern="/searchWhitePaper/buscando.do" access="permitAll" />
 		<security:intercept-url pattern="/demo/list.do" access="permitAll" />
 		<security:intercept-url pattern="/demo/display.do" access="permitAll" />
 		<security:intercept-url pattern="/description/display.do" access="permitAll" />

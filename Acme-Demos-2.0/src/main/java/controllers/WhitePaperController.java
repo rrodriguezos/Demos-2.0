@@ -86,25 +86,4 @@ public class WhitePaperController extends AbstractController {
 
 	}
 
-	// Search ------------------------------------------------------------------
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView searchResult(@RequestParam(defaultValue = "") String q,
-			String date1, String date2) {
-		ModelAndView result;
-
-		if ("".equals(q)) {
-			result = new ModelAndView("redirect:list.do");
-		} else {
-			result = new ModelAndView("whitePaper/list");
-			result.addObject("q", q);
-			result.addObject("date1", date1);
-			result.addObject("date2", date2);
-			result.addObject("whitePapers",
-					whitePaperService.searchByKeyword(q, date1, date2));
-			result.addObject("requestURI", "whitePaper/search.do");
-		}
-
-		return result;
-	}
-
 }
