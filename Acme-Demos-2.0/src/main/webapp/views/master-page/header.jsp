@@ -83,7 +83,7 @@
 		</security:authorize>
 		
 		<security:authorize access="hasRole('BANK')">
-			<li><a href="loan/bank/mylist.do"><spring:message
+			<li><a href="loan/bank/list.do"><spring:message
 										code="master.page.user.myloans" /></a></li>
 
 		</security:authorize>

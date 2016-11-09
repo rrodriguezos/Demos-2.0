@@ -21,4 +21,7 @@ public interface InstalmentRepository extends JpaRepository<Instalment, Integer>
 	@Query("select round(avg(i.instalments.size), 2) from Investment i")
 	Double avgNumberInstalmentsPerInvestment();
 	/***************** Fin *****************/
+
+	@Query("select i from Instalment i where i.loan.id = ?1")
+	Collection<Instalment> findByLoan(int loanId);
 }

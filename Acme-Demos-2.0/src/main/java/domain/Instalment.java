@@ -32,7 +32,7 @@ public class Instalment extends DomainEntity {
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	@Past
+	//@Past
 	public Date getInstalmentDate() {
 		return instalmentDate;
 	}
@@ -63,8 +63,8 @@ public class Instalment extends DomainEntity {
 	private Loan loan;
 
 	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
+//	@NotNull
+	@ManyToOne(optional = true)//false)
 	public Investment getInvestment() {
 		return investment;
 	}

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.LoanRepository;
+import domain.Bank;
 import domain.Developer;
 import domain.Instalment;
 import domain.Loan;
@@ -32,6 +33,9 @@ public class LoanService {
 	// Supported Services -------------------------------------------
 	@Autowired
 	private DeveloperService developerService;
+	
+	@Autowired
+	private BankService bankService;
 	
 	// CRUD methods -------------------------------------------------
 	public Collection<Loan> findAll() {
@@ -106,10 +110,47 @@ public class LoanService {
 		return result;
 	}
 	
+	public Collection<Loan> findLoansByBankPrincipal() {
+		Collection<Loan> result;
+		Bank bank;
+		
+		bank = bankService.findByPrincipal();
+		Assert.notNull(bank);
+		
+		result = findLoansByBank(bank.getId());
+		Assert.notNull(result);
+		
+		return result;
+	}
+	
 	public void cancel(Loan l){
 		Assert.notNull(l);
 		Assert.isTrue(l.getStatus().equals("PENDING"));
 		loanRepository.delete(l);
+	}
+
+	public void approve(int loanId) {
+		Loan loan;
+		
+		loan = findOne(loanId);
+		Assert.isTrue(loan.getStatus().equals("PENDING"), "loan.status.error");
+		
+		loan.setStatus("APPROVED");
+		loan.setProcessMoment(new Date(System.currentTimeMillis() - 10));
+		
+		save(loan);
+	}
+	
+	public void deny(int loanId) {
+		Loan loan;
+		
+		loan = findOne(loanId);
+		Assert.isTrue(loan.getStatus().equals("PENDING"), "loan.status.error");
+		
+		loan.setStatus("DENIED");
+		loan.setProcessMoment(new Date(System.currentTimeMillis() - 10));
+		
+		save(loan);
 	}
 	
 	

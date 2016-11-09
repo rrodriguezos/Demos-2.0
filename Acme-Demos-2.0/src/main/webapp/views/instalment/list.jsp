@@ -23,11 +23,30 @@
 		format="{0,date,dd/MM/yyyy HH:mm}" sortable="true" />
 	
 	<display:column property="amount" titleKey="instalment.amount" />
-	<spring:message code="instalment.edit" var="edit" />
-	<display:column title="${edit}">
-			<input type="button" value="<spring:message code="instalment.edit" />" 
-					onclick="javascript: window.location.assign('instalment/investor/edit.do?instalmentId=${row.id}')" />
-	</display:column>
+	
+	<security:authorize access="hasRole('INVESTOR')">
+		<spring:message code="instalment.edit" var="edit" />
+		<display:column title="${edit}">
+				<input type="button" value="<spring:message code="instalment.edit" />" 
+						onclick="javascript: window.location.assign('instalment/investor/edit.do?instalmentId=${row.id}')" />
+		</display:column>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('BANK')">
+		<display:column titleKey="instalment.payment">
+			<jstl:choose>
+				<jstl:when test="${row.paid == false}">
+					<input type="button" value="<spring:message code="instalment.pay" />" 
+						onclick="javascript: window.location.assign('instalment/bank/pay.do?instalmentId=${row.id}')" />
+				</jstl:when>
+				<jstl:otherwise>
+					<spring:message code="instalment.paid"  />
+				
+				</jstl:otherwise>
+			</jstl:choose>
+			
+		</display:column>
+	</security:authorize>
 	
 	
 	

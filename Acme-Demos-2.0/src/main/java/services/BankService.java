@@ -115,6 +115,18 @@ public class BankService {
 		return result;
 
 	}
+	
+	public Bank checkPrincipal() {
+		UserAccount principalUserAccount;
+		Bank result;
+		
+		principalUserAccount = LoginService.getPrincipal();
+		result = bankRepository.findByBankAccountId(principalUserAccount.getId());
+
+		Assert.notNull(result);
+		
+		return result;
+	}
 
 	public Bank reconstruct(BankRegisterForm bankRegisterForm) {
 		Bank res;

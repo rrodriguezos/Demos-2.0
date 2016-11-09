@@ -115,6 +115,13 @@
 		<security:intercept-url pattern="/loan/list.do" access="hasRole('DEVELOPER')" />
 		<security:intercept-url pattern="/loan/cancel.do" access="hasRole('DEVELOPER')" />
 		
+		<security:intercept-url pattern="/loan/bank/list.do" access="hasRole('BANK')" />
+		<security:intercept-url pattern="/loan/bank/approve.do" access="hasRole('BANK')" />
+		<security:intercept-url pattern="/loan/bank/deny.do" access="hasRole('BANK')" />
+		<security:intercept-url pattern="/instalment/bank/create.do" access="hasRole('BANK')" />
+		<security:intercept-url pattern="/instalment/bank/list.do" access="hasRole('BANK')" />
+		<security:intercept-url pattern="/instalment/bank/pay.do" access="hasRole('BANK')" />
+		
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

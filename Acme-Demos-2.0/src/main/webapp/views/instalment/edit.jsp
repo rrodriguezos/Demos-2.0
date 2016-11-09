@@ -29,3 +29,21 @@
 	</form:form>
 
 </security:authorize>
+
+
+<security:authorize access="hasRole('BANK')">
+
+	<form:form action="instalment/bank/create.do" modelAttribute="createInstalmentsForm">
+		<form:hidden path="loanId" />
+		
+		<acme:textbox code="instalment.numberInstalments" path="number" />	
+		<acme:date code="instalment.dateFirstInstalment" path="date" />
+
+		<br>
+		
+		<input type="submit" name="save"
+				value="<spring:message code="instalment.save" />" />
+		
+	</form:form>
+
+</security:authorize>
