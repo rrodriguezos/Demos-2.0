@@ -11,7 +11,6 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -63,8 +62,7 @@ public class Instalment extends DomainEntity {
 	private Loan loan;
 
 	@Valid
-//	@NotNull
-	@ManyToOne(optional = true)//false)
+	@ManyToOne(optional = true)
 	public Investment getInvestment() {
 		return investment;
 	}
@@ -74,8 +72,7 @@ public class Instalment extends DomainEntity {
 	}
 
 	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Loan getLoan() {
 		return loan;
 	}

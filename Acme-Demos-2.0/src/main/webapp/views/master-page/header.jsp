@@ -78,7 +78,17 @@
 		</security:authorize>
 		
 		<security:authorize access="hasRole('INVESTOR')">
+			<li>
+				<a href="whitePaper/investor/list.do">
+					<spring:message code="master.page.investor.listWhithePaper" />
+				</a>
+			</li>
 			
+			<li>
+				<a href="whitePaper/investor/create.do">
+					<spring:message code="master.page.investor.createWhitePaper" />
+				</a>
+			</li>
 
 		</security:authorize>
 		

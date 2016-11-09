@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.SectionRepository;
+import domain.Investor;
 import domain.Section;
+import domain.WhitePaper;
 
 @Transactional
 @Service
@@ -27,7 +29,11 @@ public class SectionService {
 	
 	
 	// Supported Services -------------------------------------------
+	@Autowired
+	private InvestorService investorService;
 	
+	@Autowired
+	private WhitePaperService whitePaperService;
 	
 	// CRUD methods -------------------------------------------------
 	public Collection<Section> findAll() {
@@ -49,10 +55,17 @@ public class SectionService {
 		return result;
 	}
 		
-	public Section create(){
+	public Section create(int whitePaperId){
 		Section result;
+		Investor investor;
+		WhitePaper whitePaper;
+		
+		investor = investorService.checkPrincipal();
+		whitePaper = whitePaperService.findOne(whitePaperId);
+		Assert.isTrue(whitePaper.getInvestor().equals(investor));
 		
 		result = new Section();
+		result.setWhitePaper(whitePaper);
 		
 		return result;
 	}
@@ -67,6 +80,22 @@ public class SectionService {
 		result = sectionRepository.sectionsByWhitePaper(whitePaperId);
 		
 		return result;
+	}
+
+	public Section delete(int sectionId) {
+		Investor investor;
+		Section section;
+		
+		Assert.notNull(sectionId);
+		
+		investor = investorService.checkPrincipal();
+		section = findOne(sectionId);
+		
+		Assert.isTrue(section.getWhitePaper().getInvestor().equals(investor));
+		
+		sectionRepository.delete(section.getId());
+		
+		return section;
 	}
 	
 	// Other Business Methods ---------------------------------------

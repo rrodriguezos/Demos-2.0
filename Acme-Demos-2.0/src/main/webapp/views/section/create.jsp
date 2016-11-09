@@ -37,7 +37,7 @@
 
 		<input type="submit" name="save"
 			value="<spring:message code="section.save" />" />
-		<acme:cancel url="whitePaper/investor/mylist.do" code="section.cancel" />
+		<acme:cancel url="whitePaper/investor/list.do" code="section.cancel" />
 
 	</form:form>
 

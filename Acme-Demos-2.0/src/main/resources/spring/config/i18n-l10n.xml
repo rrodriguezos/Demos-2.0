@@ -33,6 +33,7 @@
 		<value>/views/investment/messages</value>
 		<value>/views/instalment/messages</value>
 		<value>/views/loan/messages</value>
+		<value>/views/whitePaper/messages</value>
 	</util:list>
 
 </beans>

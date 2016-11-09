@@ -32,6 +32,7 @@
 		<value>/views/investment/tiles.xml</value>
 		<value>/views/instalment/tiles.xml</value>
 		<value>/views/loan/tiles.xml</value>
+		<value>/views/whitePaper/tiles.xml</value>
 	</util:list>
 
 </beans>

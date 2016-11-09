@@ -103,8 +103,9 @@
 		
 		<security:intercept-url pattern="/whitePaper/investor/create.do" access="hasRole('INVESTOR')" /> 
 		<security:intercept-url pattern="/whitePaper/investor/edit.do" access="hasRole('INVESTOR')" /> 
-		<security:intercept-url pattern="/section/investor/edit.do" access="hasRole('INVESTOR')" /> 
-		<security:intercept-url pattern="/section/investor/edit.do" access="hasRole('INVESTOR')" /> 
+		<security:intercept-url pattern="/whitePaper/investor/list.do" access="hasRole('INVESTOR')" /> 
+		<security:intercept-url pattern="/section/investor/create.do" access="hasRole('INVESTOR')" /> 
+		<security:intercept-url pattern="/section/investor/delete.do" access="hasRole('INVESTOR')" /> 
 		
 		<security:intercept-url pattern="/instalment/investor/list.do" access="hasRole('INVESTOR')" />
 		<security:intercept-url pattern="/instalment/investor/create.do" access="hasRole('INVESTOR')" />

@@ -50,7 +50,7 @@
 				onclick="return confirm('<spring:message code="whitePaper.confirm.delete" />')" />
 		</jstl:if>
 
-		<acme:cancel url="whitePaper/investor/mylist.do"
+		<acme:cancel url="whitePaper/investor/list.do"
 			code="whitePaper.cancel" />
 
 	</form:form>

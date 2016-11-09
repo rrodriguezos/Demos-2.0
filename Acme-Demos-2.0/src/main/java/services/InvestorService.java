@@ -13,6 +13,7 @@ import repositories.InvestorRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Bank;
 import domain.Investment;
 import domain.Investor;
 import forms.InvestorRegisterForm;
@@ -160,6 +161,18 @@ public class InvestorService {
 		Collection<Investor> res = investorRepository.investorWithMoreAvgWhitePaperPerInvestorLastQuarter();
 		Assert.notNull(res);
 		return res;
+	}
+
+	public Investor checkPrincipal() {
+		UserAccount principalUserAccount;
+		Investor result;
+			
+		principalUserAccount = LoginService.getPrincipal();
+		result = investorRepository.findByInvestorAccountId(principalUserAccount.getId());
+
+		Assert.notNull(result);
+			
+		return result;
 	}
 
 }

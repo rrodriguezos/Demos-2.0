@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
@@ -10,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.WhitePaperRepository;
+import domain.Investor;
+import domain.Section;
 import domain.WhitePaper;
 
 @Transactional
@@ -26,7 +29,10 @@ public class WhitePaperService {
 	private WhitePaperRepository whitePaperRepository;
 
 	// Supported Services -------------------------------------------
-
+	@Autowired
+	private InvestorService investorService;
+	
+	
 	// CRUD methods -------------------------------------------------
 	public Collection<WhitePaper> findAll() {
 		Collection<WhitePaper> result;
@@ -49,8 +55,15 @@ public class WhitePaperService {
 
 	public WhitePaper create() {
 		WhitePaper result;
+		Investor investor;
+		Collection<Section> sections;
 
+		investor = investorService.checkPrincipal();
+		sections = new ArrayList<Section>();
 		result = new WhitePaper();
+		
+		result.setInvestor(investor);
+		result.setSections(sections);
 
 		return result;
 	}
@@ -58,6 +71,17 @@ public class WhitePaperService {
 	public void save(WhitePaper whitePaper) {
 		Assert.notNull(whitePaper);
 		whitePaperRepository.saveAndFlush(whitePaper);
+	}
+	
+	public void delete(WhitePaper whitePaper) {
+		Investor investor;
+		
+		Assert.notNull(whitePaper);
+		
+		investor = investorService.checkPrincipal();
+		Assert.isTrue(whitePaper.getInvestor().equals(investor));
+		
+		whitePaperRepository.delete(whitePaper.getId());
 	}
 
 	// Other Business Methods ---------------------------------------
@@ -89,6 +113,17 @@ public class WhitePaperService {
 	
 	public Double avgWhitePaperPerInvestor(){
 		return whitePaperRepository.avgWhitePapersPerInvestor();
+	}
+
+	public Collection<WhitePaper> findAllByPrincipal() {
+		Collection<WhitePaper> result;
+		Investor investorPrincipal;
+		
+		investorPrincipal = investorService.checkPrincipal();
+		result = this.whitePapersByInvestor(investorPrincipal.getId());
+		Assert.notNull(result);
+		
+		return result;
 	}
 
 }
