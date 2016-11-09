@@ -96,3 +96,57 @@
 </p>
 <jstl:out value="${avgNumberInstalmentsPerInvestment}" />
 <br>
+
+<!-- ACME DEMOS 2.0 -->
+
+
+<!--  The bank/s with more loan requests -->
+<p>
+	<h4><spring:message code="administrator.dashboard.banksWithMoreLoansRequest" /></h4>
+</p>
+
+<display:table name="banksMoreLoansReq" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag" >
+	
+	<display:column property="commercialName" titleKey="bank.commercialName" />
+	
+	<display:column property="SWIFTCode" titleKey="bank.SWIFTCode" />
+	
+</display:table>
+
+<!--  The average number of pending loans per bank -->
+<p>
+	<h4><spring:message code="administrator.dashboard.avgNumberPendingLoansPerBank" /></h4>
+</p>
+<jstl:out value="${avgNumberPendingLoansPerBank}" />
+<br>
+
+<!--  The average number of white papers per investor. -->
+<p>
+	<h4><spring:message code="administrator.dashboard.avgNumberWhitePapersPerInvestor" /></h4>
+</p>
+<jstl:out value="${avgNumberWhitePaperPerInvestor}" />
+<br>
+
+<!--  The listing of investors who have published more than the average number of white papers during the last quarter. -->
+<p>
+	<h4><spring:message code="administrator.dashboard.investorWithMoreAvNumberWPLastQuarter" /></h4>
+</p>
+
+<display:table name="investorWithMoreAvNumberWPLastQuarter" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag" >
+	
+	<display:column property="name" titleKey="investor.name" />
+	<display:column property="surname" titleKey="investor.surname" />
+	<display:column property="company" titleKey="investor.company" />
+</display:table>
+
+<!--  The minimum, the average, and the maximum number of sections per white paper that has been published during the last quarter. -->
+<p>
+	<h4><spring:message code="administrator.dashboard.minAvgMaxSectionsPerWhitePaper" /></h4>
+</p>
+	<spring:message code="administrator.dashboard.min" />:
+		<jstl:out value="${minSectionsPerWhitePaper}" /> <br>
+	<spring:message code="administrator.dashboard.max" />:
+		<jstl:out value="${avgSectionsPerWhitePaper}" /> <br>
+	<spring:message code="administrator.dashboard.avg" />:
+		<jstl:out value="${maxSectionsPerWhitePaper}" /> <br>		
+<br>

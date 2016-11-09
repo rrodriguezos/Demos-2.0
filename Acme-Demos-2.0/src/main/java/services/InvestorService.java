@@ -155,5 +155,11 @@ public class InvestorService {
 				.getId());
 		return result;
 	}
+	
+	public Collection<Investor> investorWithMoreAvgWhitePaperPerInvestorLastQuarter(){
+		Collection<Investor> res = investorRepository.investorWithMoreAvgWhitePaperPerInvestorLastQuarter();
+		Assert.notNull(res);
+		return res;
+	}
 
 }

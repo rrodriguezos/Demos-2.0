@@ -16,5 +16,8 @@ public interface BankRepository extends JpaRepository<Bank, Integer> {
 
 	@Query("select b from Bank b where (b.commercialName like CONCAT('%',?1,'%'))")
 	Collection<Bank> searchByKeyword(String keyword);
+	
+	@Query("select b from Bank b where b.loans.size=(select max(b2.loans.size) from Bank b2)")
+	Collection<Bank> banksWithMoreLoans();
 
 }

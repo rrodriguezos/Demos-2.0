@@ -18,6 +18,9 @@ public interface WhitePaperRepository extends
 
 	@Query("select w from WhitePaper w where (w.title like CONCAT('%',?1,'%'))")
 	Collection<WhitePaper> searchByKeyword(String q);
+	
+	@Query("select avg(i.whitePapers.size) from Investor i")
+	Double avgWhitePapersPerInvestor();
 
 
 	@Query("select w from WhitePaper w where (w.title like CONCAT('%',?1,'%') and w.publishedDate<=?3 and w.publishedDate>=?2)")

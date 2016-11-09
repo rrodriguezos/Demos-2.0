@@ -857,7 +857,7 @@
 		</property>
 	</bean>
 	<bean id="whitePaper2" class="domain.WhitePaper">
-		<property name="publishedDate" value="04/06/2015 17:00" />
+		<property name="publishedDate" value="11/04/2016 17:00" />
 		<property name="title" value="White paper 2" />
 		<property name="abstractReview" value="Abstract Review 2" />
 		<property name="investor" ref="investor1" />
@@ -868,7 +868,7 @@
 		</property>
 	</bean>
 	<bean id="whitePaper3" class="domain.WhitePaper">
-		<property name="publishedDate" value="01/07/2015 12:00" />
+		<property name="publishedDate" value="11/01/2016 12:00" />
 		<property name="title" value="White paper 3" />
 		<property name="abstractReview" value="Abstract Review 3" />
 		<property name="investor" ref="investor2" />
@@ -880,7 +880,7 @@
 		</property>
 	</bean>
 	<bean id="whitePaper4" class="domain.WhitePaper">
-		<property name="publishedDate" value="01/07/2016 09:00" />
+		<property name="publishedDate" value="01/08/2016 09:00" />
 		<property name="title" value="White paper 4" />
 		<property name="abstractReview" value="Abstract Review 4" />
 		<property name="investor" ref="investor3" />

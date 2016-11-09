@@ -17,5 +17,8 @@ public interface LoanRepository extends JpaRepository<Loan, Integer> {
 	@Query("select d.loans from Developer d where d.id= ?1")
 	Collection<Loan> findLoansByDev(int devId);
 	
+	@Query("select avg(l.size) from Bank b join b.loans l where l.status='PENDING'")
+	Double avgPendingLoansPerBank();
+	
 
 }

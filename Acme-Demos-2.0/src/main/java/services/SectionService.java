@@ -1,5 +1,6 @@
 package services;
 
+
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +70,33 @@ public class SectionService {
 	}
 	
 	// Other Business Methods ---------------------------------------
-
+	public Integer minSectionsPerWhitePaperLastQuarter(){
+		Integer aux = sectionRepository.minSectionsPerWhitePaperLastQuarter();
+		int res;
+		if(aux == null)
+			res = 0;
+		else 
+			res = aux;
+		return res;
+	}
+	
+	public Integer maxSectionsPerWhitePaperLastQuarter(){
+		Integer aux = sectionRepository.maxSectionsPerWhitePaperLastQuarter();
+		int res;
+		if(aux == null)
+			res = 0;
+		else 
+			res = aux;
+		return res;
+	}
+	
+	public Double avgSectionsPerWhitePaperLastQuarter(){
+		Double aux = sectionRepository.avgSectionsPerWhitePaperLastQuarter();
+		double res;
+		if(aux == null)
+			res = 0;
+		else 
+			res = aux;
+		return res;
+	}
 }

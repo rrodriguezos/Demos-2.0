@@ -86,5 +86,9 @@ public class WhitePaperService {
 
 		return result;
 	}
+	
+	public Double avgWhitePaperPerInvestor(){
+		return whitePaperRepository.avgWhitePapersPerInvestor();
+	}
 
 }

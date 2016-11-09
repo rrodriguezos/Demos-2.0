@@ -153,6 +153,9 @@ public class LoanService {
 		save(loan);
 	}
 	
+	public Double avgPendingLoansPerBank(){
+		return loanRepository.avgPendingLoansPerBank();
+	}
 	
 	
 	

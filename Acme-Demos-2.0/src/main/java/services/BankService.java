@@ -152,5 +152,11 @@ public class BankService {
 		result = bankRepository.searchByKeyword(keyword);
 		return result;
 	}
+	
+	public Collection<Bank> banksWithMoreLoans(){
+		Collection<Bank> result = bankRepository.banksWithMoreLoans();
+		Assert.notNull(result);
+		return result;
+	}
 
 }
