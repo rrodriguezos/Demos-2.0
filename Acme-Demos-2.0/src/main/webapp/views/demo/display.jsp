@@ -17,7 +17,16 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<jstl:if test="${tieneBanner==true }" >
+	
+	<img width="500px" height="100x" src="${banner.getLink()}"/>
+	
+	
+</jstl:if>
 
+<br>
+<br>
+<br>
 <acme:jstlOut code="demo.title" value="${demo.title }"/>
 <acme:jstlOut code="demo.momentReleased" value="${demo.momentReleased }"/>
 
@@ -57,7 +66,6 @@
 </security:authorize>
 
 
-<br>
 <h2><spring:message code="demo.resources"/></h2>
 
 <display:table name="resources" id="row" pagesize="5" requestURI="${requestUri}" class="displaytag">
@@ -80,6 +88,11 @@
 <security:authorize access="hasRole('DEVELOPER')">
 	<input type="button" value="<spring:message code="resource.create" />" 
 			onclick="javascript: window.location.assign('resource/developer/edit.do?demoId=${demo.id}')" />
+</security:authorize>
+
+<security:authorize access="hasRole('INVESTOR')">
+	<input type="button" value="<spring:message code="demo.sponsor" />" 
+			onclick="javascript: window.location.assign('demo/investor/sponsor.do?demoId=${demo.id}')" />
 </security:authorize>
 
 

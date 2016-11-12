@@ -64,6 +64,9 @@
 		<bean class="converters.WhitePaperToStringConverter" />
 		<bean class="converters.StringToWhitePaperConverter" />
 		
+		<bean class="converters.BannerToStringConverter" />
+		<bean class="converters.StringToBannerConverter" />
+		
 	</util:list>
 
 </beans>

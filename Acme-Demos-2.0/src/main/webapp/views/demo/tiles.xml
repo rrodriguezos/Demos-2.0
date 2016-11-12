@@ -32,6 +32,10 @@
 		<put-attribute name="title" value="Details of the Demo" />
 		<put-attribute name="body" value="/views/demo/display.jsp" />
 	</definition>
-
+	
+	<definition name="demo/sponsor" extends="master.page">	
+		<put-attribute name="title" value="Sponsor Demo" />
+		<put-attribute name="body" value="/views/demo/sponsor.jsp" />
+	</definition>
 	
 </tiles-definitions>

@@ -228,6 +228,12 @@
 				<ref bean="whitePaper2" />
 			</list>
 		</property>
+		<property name="banners">
+			<list>
+				<ref bean="banner1" />
+				
+			</list>
+		</property>
 	</bean>
 
 	<bean id="investor2" class="domain.Investor">
@@ -247,6 +253,12 @@
 				<ref bean="whitePaper3" />
 			</list>
 		</property>
+		<property name="banners">
+			<list>
+				
+			</list>
+		</property>
+		
 	</bean>
 
 	<bean id="investor3" class="domain.Investor">
@@ -266,6 +278,12 @@
 				<ref bean="whitePaper4" />
 			</list>
 		</property>
+		<property name="banners">
+			<list>
+				<ref bean="banner2" />
+			</list>
+		</property>
+		
 	</bean>
 
 
@@ -400,6 +418,29 @@
 			</list>
 		</property>
 	</bean>
+	
+	<!-- Banners -->
+	<bean id="banner1" class="domain.Banner">
+		<property name="link" value="http://www.sampleprepconference.com/uploadedImages/_Assets/banner.jpg" />
+		<property name="investor" ref="investor1" />
+		<property name="demos">
+			<list>
+				<ref bean="demo1" />
+				<ref bean="demo7" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="banner2" class="domain.Banner">
+		<property name="link" value="http://www.comsoc.org/files/Publications/Tech%20Focus/TechFocusBanner.jpg" />
+		<property name="investor" ref="investor3" />
+		<property name="demos">
+			<list>
+				<ref bean="demo4" />
+				
+			</list>
+		</property>
+	</bean>
 
 
 	<!-- Demos -->
@@ -428,6 +469,7 @@
 
 			</list>
 		</property>
+		<property name="banner" ref="banner1" />
 	</bean>
 
 	<bean id="demo2" class="domain.Demo">
@@ -510,6 +552,7 @@
 
 			</list>
 		</property>
+		<property name="banner" ref="banner2" />
 	</bean>
 
 	<bean id="demo5" class="domain.Demo">
@@ -590,6 +633,7 @@
 
 			</list>
 		</property>
+		<property name="banner" ref="banner1" />
 	</bean>
 
 	<bean id="demo8" class="domain.Demo">
@@ -972,4 +1016,7 @@
 		<property name="investment" ref="investment2" />
 		<property name="loan" ref="loan5" />
 	</bean>
+	
+	
+	
 </beans>

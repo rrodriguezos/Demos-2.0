@@ -37,6 +37,7 @@ public class Investor extends Actor {
 	// Relationships --------------------------------------------------------
 	private Collection<Investment> investments;
 	private Collection<WhitePaper> whitePapers;
+	private Collection<Banner> banners;
 
 	@Valid
 	@NotNull
@@ -60,6 +61,21 @@ public class Investor extends Actor {
 	public void setWhitePapers(Collection<WhitePaper> whitePapers) {
 		this.whitePapers = whitePapers;
 	}
+	
+	
+	
+	@Valid
+	@NotNull
+	@OneToMany(mappedBy = "investor")
+	public Collection<Banner> getBanners() {
+		return banners;
+	}
+
+	public void setBanners(Collection<Banner> banners) {
+		this.banners = banners;
+	}
+	
+	
 	
 	
 	

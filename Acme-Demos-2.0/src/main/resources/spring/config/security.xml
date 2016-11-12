@@ -123,7 +123,9 @@
 		<security:intercept-url pattern="/instalment/bank/list.do" access="hasRole('BANK')" />
 		<security:intercept-url pattern="/instalment/bank/pay.do" access="hasRole('BANK')" />
 		
-	
+		<security:intercept-url pattern="/banner/investor/create.do" access="hasRole('INVESTOR')" />
+		<security:intercept-url pattern="/demo/investor/sponsor.do" access="hasRole('INVESTOR')" />
+		
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 

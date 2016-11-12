@@ -14,6 +14,7 @@ import services.DemoService;
 import services.DescriptionService;
 import services.DeveloperService;
 import services.ResourceService;
+import domain.Banner;
 import domain.Comment;
 import domain.Demo;
 import domain.Description;
@@ -72,6 +73,7 @@ public class DemoController extends AbstractController {
 		Developer developer;
 		Boolean mydemo;
 		Boolean logeado;
+		Boolean tieneBanner = false; ;
 		demo = demoService.findOne(demoId);
 		mydemo = false;
 		logeado = false;
@@ -90,11 +92,19 @@ public class DemoController extends AbstractController {
 		}
 
 		demo = demoService.findOne(demoId);
+		
 		comments = commentService.findCommentsByDemoId(demoId);
 		resources = resourceService.findResourcesByDemoId(demoId);
 		descriptions = descriptionService.findDescriptionsByDemoId(demoId);
-
 		result = new ModelAndView("demo/display");
+		if(demo.getBanner()!= null)
+			tieneBanner = true;
+		if(tieneBanner){
+			Banner ban = demo.getBanner();
+			result.addObject("tieneBanner", tieneBanner);
+			result.addObject("banner", ban);
+		}	
+		
 		result.addObject("demo", demo);
 
 		result.addObject("mydemo", mydemo);
@@ -102,6 +112,7 @@ public class DemoController extends AbstractController {
 		result.addObject("resources", resources);
 		result.addObject("descriptions", descriptions);
 		result.addObject("comments", comments);
+		
 
 		return result;
 

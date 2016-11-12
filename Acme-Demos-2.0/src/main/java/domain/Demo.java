@@ -63,6 +63,7 @@ public class Demo extends DomainEntity {
 	private Collection<Comment> comments;
 	private Collection<Description> descriptions;
 	private Collection<Investment> investments;
+	private Banner banner;
 
 	@Valid
 	@NotNull
@@ -117,6 +118,19 @@ public class Demo extends DomainEntity {
 	public void setInvestments(Collection<Investment> investments) {
 		this.investments = investments;
 	}
+	
+	
+	@Valid
+	@ManyToOne(optional = true)
+	public Banner getBanner() {
+		return banner;
+	}
+
+	public void setBanner(Banner banner) {
+		this.banner = banner;
+	}
+	
+	
 	
 	
 

@@ -183,5 +183,10 @@ public class DemoService {
 		return result;
 	}
 	/***************** Fin *****************/
+	
+	public void sponsor(Demo d){
+		Assert.notNull(d);
+		demoRepository.save(d);
+	}
 
 }

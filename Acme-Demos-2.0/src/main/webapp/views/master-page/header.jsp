@@ -118,7 +118,9 @@
 					</security:authorize>
 					<security:authorize access="hasRole('INVESTOR')">
 						<li><a href="investment/investor/list.do">
-					<spring:message code="master.page.investor.investments" /></a></li>
+							<spring:message code="master.page.investor.investments" /></a></li>
+							<li><a href="banner/investor/create.do">
+							<spring:message code="master.page.investor.create.banner" /></a></li>
 					</security:authorize>
 					<li><a href="j_spring_security_logout"> <spring:message
 						code="master.page.logout" /></a></li>
