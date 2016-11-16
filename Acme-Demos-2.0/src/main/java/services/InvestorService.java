@@ -13,9 +13,10 @@ import repositories.InvestorRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
-import domain.Bank;
+import domain.Banner;
 import domain.Investment;
 import domain.Investor;
+import domain.WhitePaper;
 import forms.InvestorRegisterForm;
 
 @Service
@@ -42,6 +43,8 @@ public class InvestorService {
 		UserAccount useraccount;
 		Investor result;
 		Collection<Investment> investments;
+		Collection<Banner> banners;
+		Collection<WhitePaper> whitpapers;
 
 		Authority aut = new Authority();
 
@@ -55,6 +58,12 @@ public class InvestorService {
 
 		investments = new LinkedList<Investment>();
 		result.setInvestments(investments);
+
+		banners = new LinkedList<Banner>();
+		result.setBanners(banners);
+
+		whitpapers = new LinkedList<WhitePaper>();
+		result.setWhitePapers(whitpapers);
 
 		return result;
 	}
@@ -156,9 +165,10 @@ public class InvestorService {
 				.getId());
 		return result;
 	}
-	
-	public Collection<Investor> investorWithMoreAvgWhitePaperPerInvestorLastQuarter(){
-		Collection<Investor> res = investorRepository.investorWithMoreAvgWhitePaperPerInvestorLastQuarter();
+
+	public Collection<Investor> investorWithMoreAvgWhitePaperPerInvestorLastQuarter() {
+		Collection<Investor> res = investorRepository
+				.investorWithMoreAvgWhitePaperPerInvestorLastQuarter();
 		Assert.notNull(res);
 		return res;
 	}
@@ -166,12 +176,13 @@ public class InvestorService {
 	public Investor checkPrincipal() {
 		UserAccount principalUserAccount;
 		Investor result;
-			
+
 		principalUserAccount = LoginService.getPrincipal();
-		result = investorRepository.findByInvestorAccountId(principalUserAccount.getId());
+		result = investorRepository
+				.findByInvestorAccountId(principalUserAccount.getId());
 
 		Assert.notNull(result);
-			
+
 		return result;
 	}
 

@@ -67,6 +67,7 @@ public class DemoService {
 	}
 
 	public void save(Demo demo) {
+		checkPrincipal(demo.getDeveloper());
 		Assert.notNull(demo);
 
 		demoRepository.saveAndFlush(demo);
@@ -103,27 +104,27 @@ public class DemoService {
 
 		Assert.isTrue(developer.equals(u));
 	}
-	
-	public Collection<Demo> search(String keyword){
-		//TODO Alguien sabe hacerlo con query??
+
+	public Collection<Demo> search(String keyword) {
+		// TODO Alguien sabe hacerlo con query??
 		String keyMin = keyword.toLowerCase();
 		Collection<Demo> res = new ArrayList<Demo>();
 		Collection<Demo> all = findAll();
 		String min;
-		for(Demo d : all){
+		for (Demo d : all) {
 			min = d.getTitle().toLowerCase();
-			if(min.contains(keyMin)){
+			if (min.contains(keyMin)) {
 				res.add(d);
 			}
-			for(Description des : d.getDescriptions()){
+			for (Description des : d.getDescriptions()) {
 				min = des.getText().toLowerCase();
-				if(min.contains(keyMin)&&(!res.contains(d))){
+				if (min.contains(keyMin) && (!res.contains(d))) {
 					res.add(d);
 				}
 			}
-			for(Resource r : d.getResources()){
+			for (Resource r : d.getResources()) {
 				min = r.getTitle().toLowerCase();
-				if((min.contains(keyMin))&&(!res.contains(d))){
+				if ((min.contains(keyMin)) && (!res.contains(d))) {
 					res.add(d);
 				}
 			}
@@ -152,7 +153,6 @@ public class DemoService {
 
 		return result;
 	}
-	
 
 	// Dashboard Developer
 	public Double averageNumberOfCommentsByDemo() {
@@ -161,7 +161,7 @@ public class DemoService {
 
 	public Collection<Demo> demos25PercentageMoreCommentsThanAvg() {
 		Collection<Demo> result;
-		
+
 		result = demoRepository.demos25PercentageMoreCommentsThanAvg();
 		return result;
 	}
@@ -173,18 +173,19 @@ public class DemoService {
 	// public Collection<Demo> demosSortedByStars() {
 	// return demoRepository.demosSortedByStars();
 	// }
-	
+
 	/***************** Principio *****************/
-	public Double  ratioDemosWithInvestment() {
+	public Double ratioDemosWithInvestment() {
 		Double result;
-		
+
 		result = demoRepository.ratioDemosWithInvestment();
-		
+
 		return result;
 	}
+
 	/***************** Fin *****************/
-	
-	public void sponsor(Demo d){
+
+	public void sponsor(Demo d) {
 		Assert.notNull(d);
 		demoRepository.save(d);
 	}

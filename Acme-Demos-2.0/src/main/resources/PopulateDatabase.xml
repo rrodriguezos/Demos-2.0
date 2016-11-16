@@ -345,7 +345,6 @@
 		</property>
 		<property name="investments">
 			<list>
-				<ref bean="investment2" />
 			</list>
 		</property>
 	</bean>
@@ -986,7 +985,6 @@
 		<property name="description" value="Inversión Doble desarrollador potencial" />
 		<property name="demo" ref="demo6" />
 		<property name="investor" ref="investor3" />
-		<property name="bank" ref="bank3" />
 		<property name="instalments">
 			<list>
 				<ref bean="instalment2" />
