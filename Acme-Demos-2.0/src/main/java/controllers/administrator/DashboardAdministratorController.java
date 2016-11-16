@@ -1,6 +1,8 @@
 package controllers.administrator;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -83,7 +85,19 @@ public class DashboardAdministratorController extends AbstractController {
 		Integer minSectionWP;
 		Integer maxSectionWP;
 		Double avgSectionWP;
+		Double ratioApprovedDeniedLoansPerBank;
 		
+		/*--------------------------------------------------------------------------
+		 * A listing of developers sorted by the ratio of approved to denied loans.
+		 * ------------------------------------------------------------------------*/
+		 Collection<Developer>all = developerService.findAll();
+		 Map<Integer,Double>ratDev = new HashMap<Integer,Double>();
+		 for(Developer del :all){
+			 Integer id = del.getId();
+			 Double rat = loanService.ratioApprovedToDeniedLoansPerDeveloper(id);
+			 ratDev.put(id, rat);
+		 }
+		//--------------------------------------------------------------------------
 		avgNumberCommentsPerDemo = commentService.averageCommentsPerDemo();
 		
 		demos25PercentageMoreCommentsThanAvg = demoService.demos25PercentageMoreCommentsThanAvg();
@@ -101,6 +115,8 @@ public class DashboardAdministratorController extends AbstractController {
 		banksWithMoreLoans = bankService.banksWithMoreLoans();
 		
 		avgNumberPendingLoansPerBank = loanService.avgPendingLoansPerBank();
+		
+		ratioApprovedDeniedLoansPerBank = loanService.ratioApprovedToDeniedLoansPerBank();
 		
 		avgNumberWhitePaperPerInvestorDouble = whitePaperService.avgWhitePaperPerInvestor();
 		
@@ -124,8 +140,11 @@ public class DashboardAdministratorController extends AbstractController {
 		
 		result.addObject("banksMoreLoansReq", banksWithMoreLoans);
 		result.addObject("avgNumberPendingLoansPerBank", avgNumberPendingLoansPerBank);
-		//TODO Faltan dos que nos tienen que confirmar.
-		
+		result.addObject("ratioApprovedDeniedLoansPerBank", ratioApprovedDeniedLoansPerBank);
+		//-----
+		result.addObject("devsRatioAppDenLoans", all);
+		result.addObject("ratDev", ratDev);
+		//-----
 		result.addObject("avgNumberWhitePaperPerInvestor", avgNumberWhitePaperPerInvestorDouble);
 		result.addObject("investorWithMoreAvNumberWPLastQuarter", investorMoreAvgWP);
 		result.addObject("minSectionsPerWhitePaper", minSectionWP);

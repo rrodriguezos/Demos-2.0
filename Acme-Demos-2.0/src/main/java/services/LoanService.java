@@ -157,6 +157,26 @@ public class LoanService {
 		return loanRepository.avgPendingLoansPerBank();
 	}
 	
+	public Double ratioApprovedToDeniedLoansPerBank(){
+		double res;
+		try{
+			res = loanRepository.ratioApprovedToDeniedLoansPerBank();
+		}catch(NullPointerException nex){
+			res = 0.0;
+		}
+		return res;
+	}
+	
+	public Double ratioApprovedToDeniedLoansPerDeveloper(int devloperId){
+		double res;
+		try{
+			res = loanRepository.ratioApprovedToDeniedLoansPerDeveloper(devloperId);
+		}catch(NullPointerException nex){
+			res = 0.0;
+		}
+		return res;
+	}
+	
 	
 	
 }

@@ -120,6 +120,33 @@
 <jstl:out value="${avgNumberPendingLoansPerBank}" />
 <br>
 
+<!--  The ratio of approved to denied loans per bank. -->
+<p>
+	<h4><spring:message code="administrator.dashboard.ratioApprovedDeniedLoansPerBank" /></h4>
+</p>
+<jstl:out value="${ratioApprovedDeniedLoansPerBank}" />
+<br>
+
+
+<!--  A listing of developers sorted by the ratio of approved to denied loans. -->
+<p>
+	<h4><spring:message code="administrator.dashboard.developerRatioApprovedDeniedLoans" /></h4>
+</p>
+
+<display:table name="devsRatioAppDenLoans"  id="row" requestURI="${requestURI}" pagesize="5" class="displaytag" >
+	
+	<display:column property="name" titleKey="developer.name" />
+	
+	<display:column property="surname" titleKey="developer.surname" />
+	
+	<display:column titleKey="ratioAppDenLoans" sortable="true">
+			<jstl:set var="ratio" value="${ratDev.get(row.id)}"/>
+			<jstl:out value="${ratio}" />
+		</display:column>	
+	
+</display:table>
+
+
 <!--  The average number of white papers per investor. -->
 <p>
 	<h4><spring:message code="administrator.dashboard.avgNumberWhitePapersPerInvestor" /></h4>

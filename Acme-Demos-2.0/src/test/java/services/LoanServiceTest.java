@@ -31,7 +31,7 @@ public class LoanServiceTest extends AbstractTest {
 	 * An actor who is authenticated as a developer must be able to:
 		Request a loan from a bank.
 	 */
-	@Test
+	//@Test
 	public void create(){
 		authenticate("developer2");
 		System.out.println("ANTES:");
@@ -50,7 +50,7 @@ public class LoanServiceTest extends AbstractTest {
 	An actor who is authenticated as a developer must be able to:
 		List the loans that he or shes requested and sort them by status.
 	*/
-	@Test
+	//@Test
 	public void list(){
 		authenticate("developer2");
 		for(Loan l : loanService.findLoansByDevPrincipal())
@@ -60,7 +60,7 @@ public class LoanServiceTest extends AbstractTest {
 	
 	/*An actor who is authenticated as a developer must be able to:
 		Cancel a request for a loan as long as its not been processed.*/
-	@Test
+	//@Test
 	public void cancel(){
 		authenticate("developer2");
 		System.out.println("ANTES:");
@@ -73,6 +73,11 @@ public class LoanServiceTest extends AbstractTest {
 		System.out.println("DESPu…S:");
 		for(Loan l : loanService.findLoansByDevPrincipal())
 			System.out.println(l.getBank().getName() + " - " + l.getStatus() + ": " +l.getAmount() );
+	}
+	
+	@Test
+	public void ratioLoanDev(){
+		System.out.println(loanService.ratioApprovedToDeniedLoansPerDeveloper(13));
 	}
 
 }
