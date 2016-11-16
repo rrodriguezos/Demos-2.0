@@ -12,6 +12,7 @@ package controllers;
 
 import javax.validation.Valid;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -62,6 +63,9 @@ public class DeveloperController extends AbstractController {
 			res = createEditModelAndView(df,"developer.error");
 		}else{
 			try{
+				if(df.getEmailAddress().isEmpty() && df.getPhone().isEmpty()){
+					throw new Exception();
+				}
 				d = developerService.reconstruct(df);
 				developerService.save(d);
 				res = new ModelAndView("redirect:../");
