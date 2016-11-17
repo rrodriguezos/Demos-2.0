@@ -75,14 +75,28 @@ public class InvestorController extends AbstractController {
 			verificarContrasenas = investorRegisterForm.getPassword().equals(
 					investorRegisterForm.getConfirmPassword());
 
-			if (binding.hasErrors() || !verificarContrasenas
-					|| !investorRegisterForm.getAccept()) {
-				result = createEditModelAndView(investorRegisterForm);
+			if (binding.hasErrors()
+					|| !verificarContrasenas
+					|| !investorRegisterForm.getAccept()
+					|| (investorRegisterForm.getEmailAddress().isEmpty() && investorRegisterForm
+							.getPhone().isEmpty())
+					|| (!investorRegisterForm.getEmailAddress().isEmpty() && investorRegisterForm
+							.getPhone().length() != 9)) {
+				result = createEditModelAndView(investorRegisterForm,
+						"register.commit.error");
 				if (!verificarContrasenas) {
 					result.addObject("message", "register.commit.password");
 				}
 				if (!investorRegisterForm.getAccept()) {
 					result.addObject("message", "register.commit.condition");
+				}
+				if (investorRegisterForm.getEmailAddress().isEmpty()
+						&& investorRegisterForm.getPhone().isEmpty()) {
+					result.addObject("message", "register.not.phone.neither.mail");
+				}
+				if (!investorRegisterForm.getPhone().isEmpty()
+						&& investorRegisterForm.getPhone().length() != 9) {
+					result.addObject("message", "register.phone.wrongLength");
 				}
 			} else {
 				try {
