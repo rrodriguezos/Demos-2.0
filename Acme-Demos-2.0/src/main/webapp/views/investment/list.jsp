@@ -29,6 +29,18 @@
 					onclick="javascript: window.location.assign('demo/display.do?demoId=${row.demo.id}')" />
 	</display:column>
 	
+	<spring:message code="investment.display" var="display" />
+	<display:column title="${display}">
+			<input type="button" value="<spring:message code="investment.display" />" 
+					onclick="javascript: window.location.assign('investment/display.do?investmentId=${row.id}')" />
+	</display:column>
+	
+	<spring:message code="investment.bank" var="bankHeader" />
+	<display:column title="${bankHeader}">
+			<input type="button" value="<spring:message code="investment.bank" />" 
+					onclick="javascript: window.location.assign('bank/listByInvestment.do?investmentId=${row.id}')" />
+	</display:column>
+	
 	<display:column titleKey="investment.instalments">
 			<input type="button" value="<spring:message code="investment.instalments" />" 
 					onclick="javascript: window.location.assign('instalment/investor/list.do?investmentId=${row.id}')" />

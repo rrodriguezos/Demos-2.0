@@ -18,7 +18,7 @@
 	<!-- Artifact identification and properties -->
 
 	<groupId>Design-and-Testing</groupId>
-	<artifactId>Acme-Demos-1.0</artifactId>
+	<artifactId>Acme-Demos-2.0</artifactId>
 	<version>1.5</version>
 	<packaging>war</packaging>
 	
@@ -28,8 +28,8 @@
 
 	<!-- Indexing information -->
 
-	<name>Acme-Demos-1.0</name>
-	<url>http://www.Acme-Demos-1.0.com</url>
+	<name>Acme-Demos-2.0</name>
+	<url>http://www.Acme-Demos-2.0.com</url>
 	<description>This is D&amp;T's acme demos project.</description>
 	
 	<!-- Build commands -->

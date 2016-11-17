@@ -53,6 +53,7 @@
 		<security:intercept-url pattern="/resource/display.do" access="permitAll" />
 		<security:intercept-url pattern="/resource/list.do" access="permitAll" />
 		<security:intercept-url pattern="/description/list.do" access="permitAll" />
+		<security:intercept-url pattern="/investment/display.do" access="permitAll" />
 		
 		<security:intercept-url pattern="/comment/display.do" access="permitAll" />
 		<security:intercept-url pattern="/comment/list.do" access="permitAll" />
@@ -70,6 +71,7 @@
 		<security:intercept-url pattern="/whitePaper/display.do" access="permitAll" />
 		<security:intercept-url pattern="/section/list.do" access="permitAll" />
 		<security:intercept-url pattern="/section/display.do" access="permitAll" />
+		<security:intercept-url pattern="/bank/listByInvestment.do" access="permitAll" />
 		
 		
 		<security:intercept-url pattern="/investor/register.do" access="isAnonymous()" />
@@ -106,6 +108,8 @@
 		<security:intercept-url pattern="/whitePaper/investor/list.do" access="hasRole('INVESTOR')" /> 
 		<security:intercept-url pattern="/section/investor/create.do" access="hasRole('INVESTOR')" /> 
 		<security:intercept-url pattern="/section/investor/delete.do" access="hasRole('INVESTOR')" /> 
+		
+		<security:intercept-url pattern="/investment/investor/edit.do" access="hasRole('INVESTOR')" /> 
 		
 		<security:intercept-url pattern="/instalment/investor/list.do" access="hasRole('INVESTOR')" />
 		<security:intercept-url pattern="/instalment/investor/create.do" access="hasRole('INVESTOR')" />

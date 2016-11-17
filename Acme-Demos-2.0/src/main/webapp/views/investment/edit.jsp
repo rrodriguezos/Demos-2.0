@@ -28,7 +28,12 @@
 		<form:hidden path="instalments" />
 		<form:hidden path="demo" />
 
-		<acme:textarea code="investment.description" path="description" />
+		<acme:textarea code="investment.description" path="description" readonly="true"/>
+		
+		<td>
+				<acme:select items="${banks}" itemLabel="commercialName"
+					code="investment.bank" path="bank" /> 
+		</td>
 		
 		<script type="text/javascript">
 			function confirmCreate() {

@@ -33,6 +33,7 @@ public class BankController extends AbstractController {
 	@Autowired
 	private InvestmentService investmentService;
 
+
 	// Constructors -----------------------------------------------------------
 
 	public BankController() {
@@ -96,22 +97,36 @@ public class BankController extends AbstractController {
 		verificarContrasenas = bankRegisterForm.getPassword().equals(
 				bankRegisterForm.getConfirmPassword());
 
-		if (binding.hasErrors() || !verificarContrasenas
-				|| !bankRegisterForm.getAccept()) {
-			result = createEditModelAndView(bankRegisterForm);
+		if (binding.hasErrors()
+				|| !verificarContrasenas
+				|| !bankRegisterForm.getAccept()
+				|| (bankRegisterForm.getEmailAddress().isEmpty() && bankRegisterForm
+						.getPhone().isEmpty())
+				|| (!bankRegisterForm.getEmailAddress().isEmpty() && bankRegisterForm
+						.getPhone().length() != 9)) {
+			result = createEditModelAndView(bankRegisterForm,
+					"register.commit.error");
 			if (!verificarContrasenas) {
 				result.addObject("message", "register.commit.password");
 			}
 			if (!bankRegisterForm.getAccept()) {
 				result.addObject("message", "register.commit.condition");
 			}
+			if (bankRegisterForm.getEmailAddress().isEmpty()
+					&& bankRegisterForm.getPhone().isEmpty()) {
+				result.addObject("message", "register.not.phone.neither.mail");
+			}
+			if (!bankRegisterForm.getPhone().isEmpty()
+					&& bankRegisterForm.getPhone().length() != 9) {
+				result.addObject("message", "register.phone.wrongLength");
+			}
 		} else {
 			try {
 				bank = bankService.reconstruct(bankRegisterForm);
 				bankService.save(bank);
-				result = new ModelAndView("redirect:/");
+				result = new ModelAndView("redirect:/security/login.do");
 			} catch (Throwable oops) {
-				result = new ModelAndView("bank/register");
+				result = new ModelAndView("investor/register");
 				result.addObject("bankRegisterForm", bankRegisterForm);
 
 				if (oops instanceof DataIntegrityViolationException) {
@@ -147,6 +162,22 @@ public class BankController extends AbstractController {
 
 		return result;
 	}
+	
+	// ListByInvestment -----------------------------------------------------------
+			@RequestMapping(value = "/listByInvestment")
+			public ModelAndView listBySlot(@RequestParam int investmentId) {
+				ModelAndView result;
+				Bank bank;
+				bank = bankService.bankByInvestment(investmentId);
+				
+				
+
+				result = new ModelAndView("bank/list");
+				result.addObject("banks", bank);
+				result.addObject("requestUri", "bank/list.do");
+
+				return result;
+			}
 
 	// Ancillary methods
 	// --------------------------------------------------------

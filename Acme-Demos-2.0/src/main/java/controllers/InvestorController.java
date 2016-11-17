@@ -102,7 +102,7 @@ public class InvestorController extends AbstractController {
 				try {
 					investor = investorService.reconstruct(investorRegisterForm);
 					investorService.save(investor);
-					result = new ModelAndView("redirect:/");
+					result = new ModelAndView("redirect:/security/login.do");
 				} catch (Throwable oops) {
 					result = new ModelAndView("investor/register");
 					result.addObject("investorRegisterForm", investorRegisterForm);

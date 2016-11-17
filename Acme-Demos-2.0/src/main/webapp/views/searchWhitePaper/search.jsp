@@ -31,7 +31,7 @@
 			<spring:message code="search.explanation.dosWhitePapers" />
 		</h2>
 		<display:table name="whitePapers" id="paco" requestURI="${requestUri}"
-			pagesize="5" class="displaytag" keepStatus="false">
+			pagesize="2" class="displaytag" keepStatus="false">
 
 
 			<spring:message code="search.title" var="title" />

@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.InvestmentService;
+import services.InvestorService;
 import domain.Investment;
+import domain.Investor;
 
 @Controller
 @RequestMapping("/investment")
@@ -19,6 +21,9 @@ public class InvestmentController extends AbstractController {
 	// Supporting services ----------------------------------------------------
 	@Autowired
 	private InvestmentService investmentService;
+
+	@Autowired
+	private InvestorService investorService;
 
 	// Constructors -----------------------------------------------------------
 	public InvestmentController() {
@@ -47,11 +52,26 @@ public class InvestmentController extends AbstractController {
 	public ModelAndView display(int investmentId) {
 		ModelAndView result;
 		Investment investment;
+		Boolean myinvestment;
+		Investor investor;
 
+		myinvestment = false;
 		investment = investmentService.findOne(investmentId);
+
+		try {
+			investor = investorService.findByPrincipal();
+
+			if (investor.equals(investment.getInvestor())) {
+				myinvestment = true;
+			}
+		} catch (Throwable oops) {
+			myinvestment = false;
+
+		}
 
 		result = new ModelAndView("investment/display");
 		result.addObject("investment", investment);
+		result.addObject("myinvestment", myinvestment);
 
 		return result;
 	}

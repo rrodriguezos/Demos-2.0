@@ -20,4 +20,7 @@ public interface BankRepository extends JpaRepository<Bank, Integer> {
 	@Query("select b from Bank b where b.loans.size=(select max(b2.loans.size) from Bank b2)")
 	Collection<Bank> banksWithMoreLoans();
 
+	@Query("select i.bank from Investment i where i.id = ?1")
+	Bank bankByInvestment(int investmentId);
+
 }

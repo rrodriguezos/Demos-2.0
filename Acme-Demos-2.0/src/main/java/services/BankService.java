@@ -83,12 +83,10 @@ public class BankService {
 	}
 
 	public void save(Bank bank) {
-		Boolean create;
-		create = false;
+
 		if (bank.getId() == 0) {
 			Md5PasswordEncoder encoder;
 
-			create = true;
 			encoder = new Md5PasswordEncoder();
 
 			bank.getUserAccount().setPassword(
@@ -115,16 +113,17 @@ public class BankService {
 		return result;
 
 	}
-	
+
 	public Bank checkPrincipal() {
 		UserAccount principalUserAccount;
 		Bank result;
-		
+
 		principalUserAccount = LoginService.getPrincipal();
-		result = bankRepository.findByBankAccountId(principalUserAccount.getId());
+		result = bankRepository.findByBankAccountId(principalUserAccount
+				.getId());
 
 		Assert.notNull(result);
-		
+
 		return result;
 	}
 
@@ -152,10 +151,17 @@ public class BankService {
 		result = bankRepository.searchByKeyword(keyword);
 		return result;
 	}
-	
-	public Collection<Bank> banksWithMoreLoans(){
+
+	public Collection<Bank> banksWithMoreLoans() {
 		Collection<Bank> result = bankRepository.banksWithMoreLoans();
 		Assert.notNull(result);
+		return result;
+	}
+
+	public Bank bankByInvestment(int investmentId) {
+		Bank result;
+
+		result = bankRepository.bankByInvestment(investmentId);
 		return result;
 	}
 

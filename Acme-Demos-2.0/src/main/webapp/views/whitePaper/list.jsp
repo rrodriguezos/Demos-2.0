@@ -17,6 +17,9 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+ <jstl:if test="${requestURI == 'searchWhitePaper/buscar.do'}">
+
+	
 <form action="whitePaper/search.do" method="get">
 	<table class="formTable">
 		<tr>
@@ -31,7 +34,7 @@
 		</tr>
 	</table>
 </form>
-
+    </jstl:if>
 <display:table name="whitePapers" id="row" pagesize="5" requestURI="${requestUri}" class="displaytag">
 	
 	<spring:message code="whitePaper.title" var="titleHeader" />

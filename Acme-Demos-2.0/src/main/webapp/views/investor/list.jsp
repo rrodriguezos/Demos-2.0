@@ -23,24 +23,29 @@
 	requestURI="${requestUri}" class="displaytag">
 
 	<spring:message code="investor.name" var="name" />
-	<display:column title="${name}" property="name" />
+	<display:column title="${name}" property="name" sortable="true" />
+
 
 	<spring:message code="investor.surname" var="surname" />
-	<display:column title="${surname}" property="surname" />
+	<display:column title="${surname}" property="surname" sortable="true" />
+
 
 	<spring:message code="investor.phone" var="phone" />
 	<display:column title="${phone}" property="phone" />
 
 	<spring:message code="investor.emailAddress" var="emailAddress" />
-	<display:column title="${emailAddress}" property="emailAddress" />
+	<display:column title="${emailAddress}" property="emailAddress"
+		sortable="true" />
 
 	<spring:message code="investor.company" var="company" />
-	<display:column title="${company}" property="company" />
-	
+	<display:column title="${company}" property="company" sortable="true"/>
+
+
 	<spring:message code="investor.whitePapers" var="whitePapersHeader" />
 	<display:column title="${whitePapersHeader}">
-			<input type="button" value="<spring:message code="investor.whitePapers" />" 
-					onclick="javascript: window.location.assign('whitePaper/list.do?investorId=${row.id}')" />
+		<input type="button"
+			value="<spring:message code="investor.whitePapers" />"
+			onclick="javascript: window.location.assign('whitePaper/list.do?investorId=${row.id}')" />
 	</display:column>
 
 	<spring:message code="investor.display" var="display" />
