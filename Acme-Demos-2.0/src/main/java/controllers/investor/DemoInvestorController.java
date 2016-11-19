@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang.NullArgumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -63,6 +64,9 @@ public class DemoInvestorController  extends AbstractController {
 
 		} else {
 			try {
+				if(demo.getBanner() == null)
+					throw new Exception();
+				
 				demoService.sponsor(demo);
 				result = new ModelAndView("redirect:/demo/display.do?demoId="+demo.getId());
 				result.addObject("requestUri", "/demo/display.do");

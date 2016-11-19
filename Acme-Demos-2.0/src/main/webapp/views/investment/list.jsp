@@ -41,11 +41,12 @@
 					onclick="javascript: window.location.assign('bank/listByInvestment.do?investmentId=${row.id}')" />
 	</display:column>
 	
+	<security:authorize access="hasRole('INVESTOR')">
 	<display:column titleKey="investment.instalments">
 			<input type="button" value="<spring:message code="investment.instalments" />" 
 					onclick="javascript: window.location.assign('instalment/investor/list.do?investmentId=${row.id}')" />
 	</display:column>
-	
+	</security:authorize>
 	
 	
 	

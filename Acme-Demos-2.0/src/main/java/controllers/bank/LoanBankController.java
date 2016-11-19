@@ -36,7 +36,7 @@ public class LoanBankController extends AbstractController {
 
 		result = new ModelAndView("loan/list");
 		result.addObject("loans", loans);
-		result.addObject("requestURI", "/loan/bank/list.do");
+		result.addObject("requestUri", "loan/bank/list.do");
 		
 		return result;
 	}
@@ -90,7 +90,7 @@ public class LoanBankController extends AbstractController {
 		
 		result = new ModelAndView("loan/list");
 		result.addObject("loans", loans);
-		result.addObject("requestURI", "/loan/bank/list.do");
+		result.addObject("requestUri", "loan/bank/list.do");
 		result.addObject("message", message);
 
 		return result;

@@ -54,7 +54,6 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Pattern(regexp = "^(\\d{9})$")
 	public String getPhone() {
 		return phone;
 	}

@@ -19,6 +19,10 @@
 
 <display:table name="loans" id="row" pagesize="5" requestURI="${requestUri}" class="displaytag">
 	
+	<security:authorize access="hasRole('DEVELOPER')">
+	<display:column property="bank.commercialName" titleKey="loan.bank" />
+	</security:authorize>
+	
 	<display:column property="status" titleKey="loan.status" sortable="true"  />
 	
 	<display:column property="requestMoment" titleKey="loan.requestMoment"

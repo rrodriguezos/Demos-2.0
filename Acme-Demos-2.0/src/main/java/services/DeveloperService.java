@@ -17,6 +17,7 @@ import security.UserAccount;
 import domain.Actor;
 import domain.Demo;
 import domain.Developer;
+import domain.Loan;
 import forms.DeveloperRegisterForm;
 
 @Service
@@ -53,6 +54,8 @@ public class DeveloperService {
 		authorities.add(a);
 		ua.setAuthorities(authorities);
 		res.setUserAccount(ua);
+		Collection<Loan>loans = new ArrayList<Loan>();
+		res.setLoans(loans);
 		return res;
 	}
 	

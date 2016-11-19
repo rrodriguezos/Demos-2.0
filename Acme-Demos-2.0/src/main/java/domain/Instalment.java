@@ -39,7 +39,8 @@ public class Instalment extends DomainEntity {
 	public void setInstalmentDate(Date instalmentDate) {
 		this.instalmentDate = instalmentDate;
 	}
-
+	
+	@NotNull
 	@Min(1)
 	public Double getAmount() {
 		return amount;
