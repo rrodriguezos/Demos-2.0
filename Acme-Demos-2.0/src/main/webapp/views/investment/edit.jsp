@@ -28,7 +28,7 @@
 		<form:hidden path="instalments" />
 		<form:hidden path="demo" />
 
-		<acme:textarea code="investment.description" path="description" readonly="true"/>
+		<acme:textarea code="investment.description" path="description" />
 		
 		<td>
 				<acme:select items="${banks}" itemLabel="commercialName"
