@@ -69,6 +69,7 @@ public class WhitePaperService {
 	}
 
 	public void save(WhitePaper whitePaper) {
+		Assert.isTrue(investorService.checkPrincipal().equals(whitePaper.getInvestor()));
 		Assert.notNull(whitePaper);
 		whitePaperRepository.saveAndFlush(whitePaper);
 	}

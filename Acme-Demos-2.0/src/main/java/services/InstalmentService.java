@@ -178,7 +178,7 @@ public class InstalmentService {
 		bankService.checkPrincipal();
 		
 		result = findOne(instalmentId);
-		Assert.isTrue(result.getInstalmentDate().after(new Date()));
+		Assert.isTrue(result.getInstalmentDate().before(new Date()));
 		
 		result.setPaid(true);
 		saveBank(result);

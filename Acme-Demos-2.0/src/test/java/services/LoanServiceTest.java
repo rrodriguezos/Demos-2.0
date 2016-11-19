@@ -1,5 +1,6 @@
 package services;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.Test;
@@ -9,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import domain.Loan;
 
@@ -78,6 +80,97 @@ public class LoanServiceTest extends AbstractTest {
 	@Test
 	public void ratioLoanDev(){
 		System.out.println(loanService.ratioApprovedToDeniedLoansPerDeveloper(13));
+	}
+	
+	/*
+	 * An actor who is authenticated as a bank must be able to
+	 * list the loans that they manage and sort them by status
+	*/
+	@Test
+	public void testPositivelistLoansAsBank(){
+		Collection<Loan> loans;
+		
+		authenticate("bank1");
+		
+		loans = loanService.findLoansByBankPrincipal();
+		Assert.isTrue(loans.size() == 2);
+		
+		unauthenticate();
+	}
+	
+	/*
+	 * An actor who is authenticated as a bank must be able to
+	 * list the loans that they manage and sort them by status
+	*/
+	@Test(expected = java.lang.IllegalArgumentException.class)
+	public void testNegativelistLoansAsUnauthenticate(){
+		Collection<Loan> loans;
+		
+		unauthenticate();
+		
+		loans = loanService.findLoansByBankPrincipal();
+		Assert.isTrue(loans.size() == 2);
+		
+		unauthenticate();
+	}
+	
+	
+	/*
+	 * An actor who is authenticated as a bank must be able to
+	 * decide on whether a pending loan must be approved or denied
+	*/
+	@Test
+	public void testPositiveApproveLoansAsBank(){
+		Loan loan;
+		
+		authenticate("bank1");
+		
+		loanService.approve(23);
+		
+		loan = loanService.findOne(23);
+		Assert.isTrue(loan.getStatus().equals("APPROVED"));
+		
+		unauthenticate();
+	}
+	
+	/*
+	 * An actor who is authenticated as a bank must be able to
+	 * decide on whether a pending loan must be approved or denied
+	 * 
+	 * Error: Loan with status approved
+	*/
+	@Test(expected = java.lang.IllegalArgumentException.class)
+	public void testNegativeApproveLoansAsBank(){
+		Loan loan;
+		
+		authenticate("bank1");
+		
+		loanService.approve(21);
+		
+		loan = loanService.findOne(21);
+		Assert.isTrue(loan.getStatus().equals("APPROVED"));
+		
+		unauthenticate();
+	}
+	
+	/*
+	 * An actor who is authenticated as a bank must be able to
+	 * decide on whether a pending loan must be approved or denied
+	 * 
+	 * Error: Loan with status approved
+	*/
+	@Test(expected = java.lang.IllegalArgumentException.class)
+	public void testNegativeDenyLoansAsBank(){
+		Loan loan;
+		
+		authenticate("bank1");
+		
+		loanService.deny(21);
+		
+		loan = loanService.findOne(21);
+		Assert.isTrue(loan.getStatus().equals("APPROVED"));
+		
+		unauthenticate();
 	}
 
 }

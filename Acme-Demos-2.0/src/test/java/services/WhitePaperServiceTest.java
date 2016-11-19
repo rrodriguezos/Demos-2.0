@@ -1,5 +1,6 @@
 package services;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -45,6 +46,83 @@ public class WhitePaperServiceTest extends AbstractTest {
 		List<WhitePaper> wPapers = (List<WhitePaper>) whitePaperService
 				.searchByKeyword("white", range1, range2);
 		Assert.isTrue(wPapers.size() == 2);
+	}
+	
+	/*
+	 * An actor who is authenticated as an investor must be able to
+	 * manage his or her white papers, which includes, creating, listing, 
+	 * editing, and deleting them
+	 */
+	
+	@Test
+	public void testPositiveCreateWhitePaper() {
+		WhitePaper whitePaper;
+		Integer nOld;
+		Integer nNew;
+		Calendar cal;
+		
+		authenticate("investor1");
+		
+		whitePaper = whitePaperService.create();
+		cal = Calendar.getInstance();
+		cal.set(2016, 2, 31, 12, 00);
+		
+		whitePaper.setAbstractReview("prueba");
+		whitePaper.setTitle("prueba");
+		whitePaper.setPublishedDate(cal.getTime());
+		
+		nOld = whitePaperService.findAll().size();
+		whitePaperService.save(whitePaper);
+		nNew = whitePaperService.findAll().size();
+		
+		Assert.isTrue(whitePaper.getId() == 0);
+		Assert.isTrue(nNew == nOld + 1);
+		
+		unauthenticate();
+	}
+	
+
+	/*
+	 * An actor who is authenticated as an investor must be able to
+	 * manage his or her white papers, which includes, creating, listing, 
+	 * editing, and deleting them
+	 * 
+	 * Error: WhitePaper of other investor
+	 */
+	
+	@Test(expected = java.lang.IllegalArgumentException.class)
+	public void testNegativeDelteWhitePaperOtherInversor() {
+		WhitePaper whitePaper;
+		
+		authenticate("investor1");
+		
+		whitePaper = whitePaperService.findOne(68);
+	
+		whitePaperService.delete(whitePaper);
+		
+		unauthenticate();
+	}
+	
+	/*
+	 * An actor who is authenticated as an investor must be able to
+	 * manage his or her white papers, which includes, creating, listing, 
+	 * editing, and deleting them
+	 * 
+	 * Error: WhitePaper of other investor
+	 */
+	
+	@Test(expected = java.lang.IllegalArgumentException.class)
+	public void testNegativeEditWhitePaperAsAdmin() {
+		WhitePaper whitePaper;
+		
+		authenticate("admin");
+		
+		whitePaper = whitePaperService.findOne(68);
+		whitePaper.setTitle("aaa");
+	
+		whitePaperService.save(whitePaper);
+		
+		unauthenticate();
 	}
 
 }
