@@ -126,7 +126,7 @@ public class BankController extends AbstractController {
 				bankService.save(bank);
 				result = new ModelAndView("redirect:/security/login.do");
 			} catch (Throwable oops) {
-				result = new ModelAndView("investor/register");
+				result = new ModelAndView("bank/register");
 				result.addObject("bankRegisterForm", bankRegisterForm);
 
 				if (oops instanceof DataIntegrityViolationException) {
