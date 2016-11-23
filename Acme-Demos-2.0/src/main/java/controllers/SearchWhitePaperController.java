@@ -79,7 +79,7 @@ public class SearchWhitePaperController extends AbstractController {
 		Collection<WhitePaper> whitePapers = new HashSet<WhitePaper>();
 		whitePapers = whitePaperService.searchByKeyword(text, date1, date2);
 
-		result = new ModelAndView("searchFormWhitePaper/buscando");
+		result = new ModelAndView("searchWhitePaper/buscando");
 		result.addObject("whitePapers", whitePapers);
 		result.addObject("searchFormWhitePaper", searchFormWhitePaper);
 		result.addObject("requestUri", "searchWhitePaper/buscando.do");
