@@ -131,7 +131,7 @@ public class BankController extends AbstractController {
 
 				if (oops instanceof DataIntegrityViolationException) {
 					result.addObject("message",
-							"register.commit.duplicatedBankname");
+							"register.commit.duplicatedUsername");
 				} else {
 					result.addObject("message", "register.commit.error");
 				}
