@@ -359,8 +359,8 @@
 		<property name="developer" ref="developer1" />
 		<property name="instalments">
 			<list>
-				<ref bean="instalment1" />
-				<ref bean="instalment2" />
+				<ref bean="instalment4" />
+				<ref bean="instalment5" />
 			</list>
 		</property>
 	</bean>
@@ -413,7 +413,7 @@
 		<property name="developer" ref="developer3" />
 		<property name="instalments">
 			<list>
-				<ref bean="instalment3" />
+				<ref bean="instalment6" />
 			</list>
 		</property>
 	</bean>
@@ -998,20 +998,38 @@
 		<property name="instalmentDate" value="02/05/2016 17:11" />
 		<property name="amount" value="1250.00" />
 		<property name="investment" ref="investment1" />
-		<property name="loan" ref="loan1" />
 	</bean>
 
 	<bean id="instalment2" class="domain.Instalment">
 		<property name="instalmentDate" value="02/05/2015 19:34" />
 		<property name="amount" value="1250.0" />
-		<property name="investment" ref="investment2" />
-		<property name="loan" ref="loan1" />
+		<property name="investment" ref="investment2" />	
 	</bean>
 
 	<bean id="instalment3" class="domain.Instalment">
 		<property name="instalmentDate" value="04/05/2016 00:00" />
 		<property name="amount" value="250.0" />
 		<property name="investment" ref="investment2" />
+	</bean>
+	
+	<bean id="instalment4" class="domain.Instalment">
+		<property name="instalmentDate" value="01/06/2016 17:11" />
+		<property name="amount" value="1250.00" />
+		<property name="loan" ref="loan1" />
+		<property name="paid" value="true" />
+	</bean>
+
+	<bean id="instalment5" class="domain.Instalment">
+		<property name="instalmentDate" value="01/07/2016 19:34" />
+		<property name="amount" value="1250.0" />
+		<property name="loan" ref="loan1" />
+		<property name="paid" value="true" />
+	</bean>
+
+	<bean id="instalment6" class="domain.Instalment">
+		<property name="instalmentDate" value="04/05/2016 00:00" />
+		<property name="amount" value="250.0" />
+		<property name="paid" value="true" />
 		<property name="loan" ref="loan5" />
 	</bean>
 	
