@@ -100,7 +100,6 @@ public class BankRegisterForm {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Pattern(regexp = "^(\\d{9})$")
 	public String getPhone() {
 		return phone;
 	}
@@ -110,7 +109,6 @@ public class BankRegisterForm {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@NotBlank
 	@Email
 	public String getEmailAddress() {
 		return emailAddress;

@@ -60,10 +60,6 @@
 	
 </display:table>
 <br>
-<security:authorize access="hasRole('DEVELOPER')">
-	<input type="button" value="<spring:message code="description.create" />" 
-			onclick="javascript: window.location.assign('description/developer/edit.do?demoId=${demo.id}')" />
-</security:authorize>
 
 
 <h2><spring:message code="demo.resources"/></h2>
@@ -85,10 +81,6 @@
 	
 </display:table>
 <br>
-<security:authorize access="hasRole('DEVELOPER')">
-	<input type="button" value="<spring:message code="resource.create" />" 
-			onclick="javascript: window.location.assign('resource/developer/edit.do?demoId=${demo.id}')" />
-</security:authorize>
 
 <security:authorize access="hasRole('INVESTOR')">
 	<input type="button" value="<spring:message code="demo.sponsor" />" 

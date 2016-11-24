@@ -80,7 +80,7 @@ public class InvestorController extends AbstractController {
 					|| !investorRegisterForm.getAccept()
 					|| (investorRegisterForm.getEmailAddress().isEmpty() && investorRegisterForm
 							.getPhone().isEmpty())
-					|| (!investorRegisterForm.getEmailAddress().isEmpty() && investorRegisterForm
+					|| (investorRegisterForm.getEmailAddress().isEmpty() && investorRegisterForm
 							.getPhone().length() != 9)) {
 				result = createEditModelAndView(investorRegisterForm,
 						"register.commit.error");

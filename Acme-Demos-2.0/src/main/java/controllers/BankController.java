@@ -102,7 +102,7 @@ public class BankController extends AbstractController {
 				|| !bankRegisterForm.getAccept()
 				|| (bankRegisterForm.getEmailAddress().isEmpty() && bankRegisterForm
 						.getPhone().isEmpty())
-				|| (!bankRegisterForm.getEmailAddress().isEmpty() && bankRegisterForm
+				|| (bankRegisterForm.getEmailAddress().isEmpty() && bankRegisterForm
 						.getPhone().length() != 9)) {
 			result = createEditModelAndView(bankRegisterForm,
 					"register.commit.error");

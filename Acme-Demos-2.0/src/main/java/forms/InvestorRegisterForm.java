@@ -2,7 +2,6 @@ package forms;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -98,7 +97,6 @@ public class InvestorRegisterForm {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@Pattern(regexp = "^(\\d{9})$")
 	public String getPhone() {
 		return phone;
 	}
@@ -108,7 +106,6 @@ public class InvestorRegisterForm {
 	}
 
 	@SafeHtml(whitelistType = WhiteListType.NONE)
-	@NotBlank
 	@Email
 	public String getEmailAddress() {
 		return emailAddress;
