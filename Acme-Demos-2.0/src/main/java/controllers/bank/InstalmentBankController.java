@@ -46,18 +46,26 @@ public class InstalmentBankController extends AbstractController {
 		result = new ModelAndView("instalment/list");
 		result.addObject("instalments", instalments);
 		result.addObject("requestUri", "instalment/bank/list.do");
+		result.addObject("loanId", loanId);
 		
 		return result;
 	}
 	
 	//Pay -----------------------------------------------------------
 	@RequestMapping(value="/pay")
-	public ModelAndView pay(@RequestParam int instalmentId){
+	public ModelAndView pay(@RequestParam int instalmentId,RedirectAttributes redir){
 		ModelAndView result;
 		Instalment instalment;
+		Instalment inst2 = instalmentService.findOne(instalmentId);
+		try{
+			instalment = instalmentService.pay(instalmentId);
+			result = new ModelAndView("redirect:/instalment/bank/list.do?loanId=" + instalment.getLoan().getId());
+		}catch(Throwable oops){
+			result = new ModelAndView("redirect:/instalment/bank/list.do?loanId=" + inst2.getLoan().getId());
+			redir.addFlashAttribute("message", "instalment.before");
+			
+		}
 		
-		instalment = instalmentService.pay(instalmentId);
-		result = new ModelAndView("redirect:/instalment/bank/list.do?loanId=" + instalment.getLoan());
 		
 		return result;
 	}

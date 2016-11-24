@@ -54,5 +54,10 @@
 	
 
 </display:table>
+<security:authorize access="hasRole('INVESTOR')">
 <input type="button" value="<spring:message code="instalment.create" />" 
 					onclick="javascript: window.location.assign('instalment/investor/create.do?investmentId=${investmentId}')" />
+</security:authorize>
+
+
+

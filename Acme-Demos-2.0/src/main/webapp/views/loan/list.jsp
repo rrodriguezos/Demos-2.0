@@ -57,6 +57,12 @@
 	
 		<display:column titleKey="loan.instalment">
 			<jstl:choose>
+				<jstl:when test="${row.status == 'PENDING'}">
+					<spring:message code="loan.pending" />
+				</jstl:when>	
+				<jstl:when test="${row.status == 'DENIED'}">
+					<spring:message code="loan.denied" />
+				</jstl:when>
 				<jstl:when test="${row.instalments.size() == 0}">
 					<input type="button" value="<spring:message code="loan.instalment.create" />" 
 							onclick="javascript: window.location.assign('instalment/bank/create.do?loanId=${row.id}')" />
