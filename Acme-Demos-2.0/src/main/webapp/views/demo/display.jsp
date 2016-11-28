@@ -28,7 +28,8 @@
 <br>
 <br>
 <acme:jstlOut code="demo.title" value="${demo.title }"/>
-<acme:jstlOut code="demo.momentReleased" value="${demo.momentReleased }"/>
+<b><spring:message code="demo.momentReleased" />: </b> <fmt:formatDate value="${demo.momentReleased }" pattern="dd/MM/yyyy HH:mm" />
+<br />
 
 
 
