@@ -21,7 +21,8 @@
 <br>
 <br>
 <acme:jstlOut code="investment.description" value="${investment.description }"/>
-<acme:jstlOut code="investment.approvalMoment" value="${investment.approvalMoment }"/>
+<b><spring:message code="investment.approvalMoment" />: </b> <fmt:formatDate value="${investment.approvalMoment }" pattern="dd/MM/yyyy HH:mm" />
+<br />
 
 <acme:jstlOut code="investment.bank" value="${investment.bank.commercialName }"/>
 
