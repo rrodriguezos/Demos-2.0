@@ -28,6 +28,7 @@
 		<form:hidden path="descriptions" />
 		<form:hidden path="comments" />
 		<form:hidden path="resources" />
+		<form:hidden path="investments" />
 
 
 		<acme:textbox code="demo.title" path="title" />
@@ -43,8 +44,7 @@
 
 		<jstl:if test="${demo.id != 0}">
 			<input type="submit" name="save"
-				value="<spring:message code="demo.save" />"
-				onclick="return confirm('<spring:message code="demo.confirm.delete.descriptions" />')" />
+				value="<spring:message code="demo.save" />"/>
 			<input type="submit" name="delete"
 				value="<spring:message code="demo.delete"/>"
 				onclick="return confirm('<spring:message code="demo.confirm.delete" />')" />
