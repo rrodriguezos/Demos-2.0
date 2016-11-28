@@ -25,7 +25,7 @@
 			<jstl:out value="'${searchForm.text}'"></jstl:out>
 			<spring:message code="search.explanation.dos" />
 		</h2>
-		<display:table name="demos" id="paco" requestURI="${requestUri}"
+		<display:table name="demos" id="row" requestURI="${requestUri}"
 			pagesize="5" class="displaytag" keepStatus="false">
 			
 
@@ -35,6 +35,10 @@
 			<spring:message code="search.momentReleased" var="momentReleased" />
 			<display:column property="momentReleased" title="${momentReleased}"
 				sortable="true" format="{0, date, dd/MM/yyyy HH:mm}" /> />
+			<display:column title="${display}">
+			<input type="button" value="<spring:message code="demo.display" />" 
+					onclick="javascript: window.location.assign('demo/display.do?demoId=${row.id}')" />
+			</display:column>		
 		</display:table>
 	</jstl:if>
 </div>
