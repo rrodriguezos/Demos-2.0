@@ -23,8 +23,8 @@
 <acme:jstlOut code="whitePaper.title" value="${whitePaper.title }" />
 <acme:jstlOut code="whitePaper.abstractReview"
 	value="${whitePaper.abstractReview }" />
-<acme:jstlOut code="whitePaper.publishedDate"
-	value="${whitePaper.publishedDate }" />
+<b><spring:message code="whitePaper.publishedDate" />: </b> <fmt:formatDate value="${whitePaper.publishedDate }" pattern="dd/MM/yyyy HH:mm" />
+<br />
 
 
 <security:authorize access="hasRole('INVESTOR')">
